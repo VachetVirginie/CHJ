@@ -288,7 +288,7 @@ async function uploadEditorImage(event) {
 
   status.textContent = "Import de l'image en cours…";
   try {
-    const file = input.files[0];
+    const file = await compressImage(input.files[0]);
     const formData = new FormData();
     formData.set("password", password);
     formData.set("id", id);
@@ -408,6 +408,52 @@ function withCacheBust(path) {
   const url = new URL(path, window.location.origin);
   url.searchParams.set("t", Date.now());
   return url.href;
+}
+
+async function compressImage(file) {
+  if (!file || !file.type.startsWith("image/")) return file;
+  if (file.type === "image/gif") return file;
+
+  const image = await loadImage(file);
+  const maxSize = 1400;
+  const scale = Math.min(1, maxSize / Math.max(image.width, image.height));
+  const width = Math.max(1, Math.round(image.width * scale));
+  const height = Math.max(1, Math.round(image.height * scale));
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+
+  const context = canvas.getContext("2d");
+  context.drawImage(image, 0, 0, width, height);
+
+  const blob = await canvasToBlob(canvas, "image/jpeg", 0.82);
+  const originalName = file.name.replace(/\.[^.]+$/, "");
+  return new File([blob], `${slugify(originalName) || "image"}.jpg`, { type: "image/jpeg" });
+}
+
+function loadImage(file) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    const url = URL.createObjectURL(file);
+    image.onload = () => {
+      URL.revokeObjectURL(url);
+      resolve(image);
+    };
+    image.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Image illisible"));
+    };
+    image.src = url;
+  });
+}
+
+function canvasToBlob(canvas, type, quality) {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      if (blob) resolve(blob);
+      else reject(new Error("Compression image impossible"));
+    }, type, quality);
+  });
 }
 
 function normalizePath(path) {
