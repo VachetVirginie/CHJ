@@ -248,7 +248,7 @@ function editorItemHtml(item = {}) {
         <label>Technique<input class="field" name="technique" value="${escapeAttr(item.technique || "")}" /></label>
         <label>Année<input class="field" name="annee" value="${escapeAttr(item.annee || "")}" /></label>
         <label>Image URL<input class="field" name="image" value="${escapeAttr(item.image || "")}" /></label>
-        <label>Importer une image<input class="field" name="imageFile" type="file" accept="image/*" /></label>
+        <label class="upload-control">Importer une image<span class="upload-button">Choisir une image</span><input name="imageFile" type="file" accept="image/*" /></label>
         <label>Disponible<select class="field" name="disponible"><option value="true"${item.disponible !== false ? " selected" : ""}>Oui</option><option value="false"${item.disponible === false ? " selected" : ""}>Non</option></select></label>
       </div>
       <label>Description<textarea class="field textarea" name="description">${escapeHtml(item.description || "")}</textarea></label>
@@ -302,7 +302,10 @@ async function uploadEditorImage(event) {
       })
     });
     const result = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(result.error || "Import impossible");
+    if (!response.ok) {
+      const detail = typeof result.detail === "string" ? result.detail : JSON.stringify(result.detail || "");
+      throw new Error([result.error || "Import impossible", detail].filter(Boolean).join(" — "));
+    }
     imageField.value = result.url;
     status.textContent = "Image importée. Clique ensuite sur Enregistrer sur GitHub.";
   } catch (error) {

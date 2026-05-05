@@ -375,6 +375,27 @@ h3 {
   font-weight: 800;
 }
 
+.upload-control input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.upload-button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  padding: 0 16px;
+  background: var(--ink);
+  color: var(--panel);
+  cursor: pointer;
+}
+
 .site-footer {
   padding: 26px 0 40px;
   color: var(--muted);

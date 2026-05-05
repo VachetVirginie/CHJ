@@ -19,6 +19,10 @@ exports.handler = async (event) => {
     return jsonResponse(500, { error: "Variables Netlify manquantes: " + missing.join(", ") });
   }
 
+  if (!event.body) {
+    return jsonResponse(400, { error: "Image manquante" });
+  }
+
   let body;
   try {
     body = JSON.parse(event.body || "{}");
@@ -38,6 +42,9 @@ exports.handler = async (event) => {
   if (!ALLOWED_TYPES.has(contentType)) return jsonResponse(400, { error: "Format image non accepté" });
 
   const base64 = dataUrl.includes(",") ? dataUrl.split(",").pop() : dataUrl;
+  if (!base64 || !/^[a-z0-9+/=\s]+$/i.test(base64)) {
+    return jsonResponse(400, { error: "Contenu image invalide" });
+  }
   const buffer = Buffer.from(base64, "base64");
 
   if (!buffer.length) return jsonResponse(400, { error: "Image vide" });
@@ -62,7 +69,7 @@ exports.handler = async (event) => {
       const currentJson = await current.json();
       sha = currentJson.sha || null;
     } else if (current.status !== 404) {
-      const detail = await current.text();
+      const detail = await readResponseDetail(current);
       return jsonResponse(current.status, { error: "Lecture GitHub impossible", detail });
     }
 
@@ -79,9 +86,9 @@ exports.handler = async (event) => {
       body: JSON.stringify(payload)
     });
 
-    const savedJson = await saved.json().catch(() => ({}));
+    const savedJson = await saved.json().catch(() => null);
     if (!saved.ok) {
-      return jsonResponse(saved.status, { error: "Écriture GitHub impossible", detail: savedJson });
+      return jsonResponse(saved.status, { error: "Écriture GitHub impossible", detail: savedJson || "Réponse GitHub illisible" });
     }
 
     return jsonResponse(200, {
@@ -91,7 +98,11 @@ exports.handler = async (event) => {
       commit: savedJson.commit && savedJson.commit.html_url ? savedJson.commit.html_url : null
     });
   } catch (error) {
-    return jsonResponse(500, { error: error && error.message ? error.message : "Erreur serveur" });
+    console.error("upload-image error", error);
+    return jsonResponse(500, {
+      error: "Erreur serveur upload-image",
+      detail: error && error.message ? error.message : "Erreur inconnue"
+    });
   }
 };
 
@@ -127,6 +138,15 @@ function githubHeaders(token) {
 
 function encodeURIComponentPath(path) {
   return String(path).split("/").map(encodeURIComponent).join("/");
+}
+
+async function readResponseDetail(response) {
+  const text = await response.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    return text;
+  }
 }
 
 function jsonResponse(statusCode, body) {
