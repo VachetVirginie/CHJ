@@ -24,9 +24,9 @@ async function init() {
 }
 
 async function fetchCatalogue() {
-  const response = await fetch(CONFIG.dataUrl, { cache: "no-store" });
+  const response = await fetch(withCacheBust(CONFIG.dataUrl), { cache: "no-store" });
   if (response.ok) return response.json();
-  const fallback = await fetch(CONFIG.fallbackDataUrl, { cache: "no-store" });
+  const fallback = await fetch(withCacheBust(CONFIG.fallbackDataUrl), { cache: "no-store" });
   if (!fallback.ok) throw new Error("HTTP " + response.status);
   return fallback.json();
 }
@@ -352,6 +352,12 @@ function onNavigate(event) {
 
 function absoluteUrl(path) {
   return new URL(path, window.location.origin).href;
+}
+
+function withCacheBust(path) {
+  const url = new URL(path, window.location.origin);
+  url.searchParams.set("t", Date.now());
+  return url.href;
 }
 
 function normalizePath(path) {
