@@ -214,7 +214,6 @@ function renderAdminEditor() {
         </div>
         <div class="actions admin-actions">
           <button class="button" type="button" id="addPaintingBtn">Ajouter un tableau</button>
-          <button class="button primary" type="submit" id="saveCatalogueBtn"><span class="button-label">Enregistrer sur GitHub</span><span class="loader" aria-hidden="true"></span></button>
         </div>
         <div id="adminStatus" class="admin-status" role="status"></div>
         <section id="paintingsEditor" class="editor-list">
@@ -325,7 +324,7 @@ async function uploadEditorImage(event) {
     if (thumb) {
       thumb.outerHTML = `<img class="editor-thumb" src="${escapeAttr(result.url)}" alt="${escapeAttr(item.querySelector('[name="titre"]').value || "Tableau")}" loading="lazy" />`;
     }
-    status.textContent = "Image importée. Clique ensuite sur Enregistrer sur GitHub.";
+    status.textContent = "Image importée. Clique ensuite sur Enregistrer";
   } catch (error) {
     status.textContent = error && error.message ? error.message : "Erreur inconnue.";
   } finally {
