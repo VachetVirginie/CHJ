@@ -52,6 +52,7 @@ GITHUB_OWNER
 GITHUB_REPO
 GITHUB_BRANCH
 GITHUB_JSON_PATH
+GITHUB_IMAGES_PATH
 ADMIN_SAVE_PASSWORD
 ```
 
@@ -62,6 +63,7 @@ GITHUB_OWNER=ton-compte
 GITHUB_REPO=galerie-tableaux
 GITHUB_BRANCH=main
 GITHUB_JSON_PATH=data/tableaux.example.json
+GITHUB_IMAGES_PATH=images
 ADMIN_SAVE_PASSWORD=mot-de-passe-sauvegarde
 ```
 
@@ -78,15 +80,37 @@ Ne mets jamais le token dans le code. Il doit être uniquement dans les variable
 
 ## Images
 
-Pour l'instant le formulaire modifie le champ `image` sous forme d'URL.
+Dans `/admin-editeur`, chaque tableau a deux champs image :
 
-Exemple :
+- `Image URL` pour coller une URL manuellement.
+- `Importer une image` pour envoyer une image vers GitHub.
+
+Quand une image est importée, elle est commitée dans le dossier configuré par :
+
+```text
+GITHUB_IMAGES_PATH=images
+```
+
+Puis le champ `Image URL` est rempli automatiquement avec une URL du type :
 
 ```text
 https://raw.githubusercontent.com/UTILISATEUR/REPO/main/images/001.jpg
 ```
 
-L'upload direct d'image vers GitHub peut être ajouté ensuite avec une fonction dédiée.
+Après l'import, clique sur `Enregistrer sur GitHub` pour sauvegarder cette URL dans le JSON.
+
+Formats acceptés :
+
+- jpg
+- png
+- webp
+- gif
+
+Taille maximum :
+
+```text
+4 Mo
+```
 
 ## Format du JSON
 

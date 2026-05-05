@@ -228,10 +228,12 @@ function renderAdminEditor() {
   document.getElementById("adminForm").addEventListener("submit", submitCatalogue);
   document.getElementById("paintingsEditor").addEventListener("click", (event) => {
     const button = event.target.closest("[data-remove-editor-item]");
-    if (!button) return;
-    const item = button.closest(".editor-item");
-    if (item) item.remove();
+    if (button) {
+      const item = button.closest(".editor-item");
+      if (item) item.remove();
+    }
   });
+  document.getElementById("paintingsEditor").addEventListener("change", uploadEditorImage);
 }
 
 function editorItemHtml(item = {}) {
@@ -246,6 +248,7 @@ function editorItemHtml(item = {}) {
         <label>Technique<input class="field" name="technique" value="${escapeAttr(item.technique || "")}" /></label>
         <label>Année<input class="field" name="annee" value="${escapeAttr(item.annee || "")}" /></label>
         <label>Image URL<input class="field" name="image" value="${escapeAttr(item.image || "")}" /></label>
+        <label>Importer une image<input class="field" name="imageFile" type="file" accept="image/*" /></label>
         <label>Disponible<select class="field" name="disponible"><option value="true"${item.disponible !== false ? " selected" : ""}>Oui</option><option value="false"${item.disponible === false ? " selected" : ""}>Non</option></select></label>
       </div>
       <label>Description<textarea class="field textarea" name="description">${escapeHtml(item.description || "")}</textarea></label>
@@ -259,6 +262,54 @@ function editorItemHtml(item = {}) {
 function addEditorItem() {
   const nextId = String(document.querySelectorAll(".editor-item").length + 1).padStart(3, "0");
   document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml({ id: nextId, disponible: true }));
+}
+
+async function uploadEditorImage(event) {
+  const input = event.target.closest('input[name="imageFile"]');
+  if (!input || !input.files || !input.files[0]) return;
+
+  const item = input.closest(".editor-item");
+  const status = document.getElementById("adminStatus");
+  const password = document.querySelector('[name="password"]').value;
+  const id = slugify(item.querySelector('[name="id"]').value);
+  const imageField = item.querySelector('[name="image"]');
+
+  if (!password) {
+    status.textContent = "Entre le mot de passe de sauvegarde avant d'importer une image.";
+    input.value = "";
+    return;
+  }
+
+  if (!id) {
+    status.textContent = "Renseigne l'id du tableau avant d'importer une image.";
+    input.value = "";
+    return;
+  }
+
+  status.textContent = "Import de l'image en cours…";
+  try {
+    const file = input.files[0];
+    const dataUrl = await fileToDataUrl(file);
+    const response = await fetch("/.netlify/functions/upload-image", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        password,
+        id,
+        filename: file.name,
+        contentType: file.type,
+        dataUrl
+      })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || "Import impossible");
+    imageField.value = result.url;
+    status.textContent = "Image importée. Clique ensuite sur Enregistrer sur GitHub.";
+  } catch (error) {
+    status.textContent = error && error.message ? error.message : "Erreur inconnue.";
+  } finally {
+    input.value = "";
+  }
 }
 
 async function submitCatalogue(event) {
@@ -358,6 +409,15 @@ function withCacheBust(path) {
   const url = new URL(path, window.location.origin);
   url.searchParams.set("t", Date.now());
   return url.href;
+}
+
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onerror = () => reject(new Error("Lecture du fichier impossible"));
+    reader.readAsDataURL(file);
+  });
 }
 
 function normalizePath(path) {
