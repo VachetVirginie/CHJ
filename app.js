@@ -212,9 +212,9 @@ function renderAdminEditor() {
           <label>WhatsApp<input class="field" name="siteWhatsapp" value="${escapeAttr(catalogue.site.whatsapp)}" /></label>
           <label>Mot de passe sauvegarde<input class="field" name="password" type="password" autocomplete="current-password" required /></label>
         </div>
-        <div class="actions">
+        <div class="actions admin-actions">
           <button class="button" type="button" id="addPaintingBtn">Ajouter un tableau</button>
-          <button class="button primary" type="submit">Enregistrer sur GitHub</button>
+          <button class="button primary" type="submit" id="saveCatalogueBtn"><span class="button-label">Enregistrer sur GitHub</span><span class="loader" aria-hidden="true"></span></button>
         </div>
         <div id="adminStatus" class="admin-status" role="status"></div>
         <section id="paintingsEditor" class="editor-list">
@@ -237,21 +237,29 @@ function renderAdminEditor() {
 }
 
 function editorItemHtml(item = {}) {
+  const image = item.image || "";
   return `
     <article class="editor-item">
-      <div class="form-grid">
-        <label>ID stable<input class="field" name="id" value="${escapeAttr(item.id || "")}" required /></label>
-        <label>Titre<input class="field" name="titre" value="${escapeAttr(item.titre || "")}" required /></label>
-        <label>Artiste<input class="field" name="artiste" value="${escapeAttr(item.artiste || "")}" /></label>
-        <label>Prix<input class="field" name="prix" value="${escapeAttr(item.prix || "")}" /></label>
-        <label>Dimensions<input class="field" name="dimensions" value="${escapeAttr(item.dimensions || "")}" /></label>
-        <label>Technique<input class="field" name="technique" value="${escapeAttr(item.technique || "")}" /></label>
-        <label>Année<input class="field" name="annee" value="${escapeAttr(item.annee || "")}" /></label>
-        <label>Image URL<input class="field" name="image" value="${escapeAttr(item.image || "")}" /></label>
-        <label class="upload-control">Importer une image<span class="upload-button">Choisir une image</span><input name="imageFile" type="file" accept="image/*" /></label>
-        <label>Disponible<select class="field" name="disponible"><option value="true"${item.disponible !== false ? " selected" : ""}>Oui</option><option value="false"${item.disponible === false ? " selected" : ""}>Non</option></select></label>
+      <div class="editor-item-layout">
+        <div class="editor-preview">
+          ${image ? `<img class="editor-thumb" src="${escapeAttr(image)}" alt="${escapeAttr(item.titre || "Tableau")}" loading="lazy" />` : `<div class="editor-thumb editor-thumb-empty">Image à importer</div>`}
+          <input type="hidden" name="image" value="${escapeAttr(image)}" />
+          <label class="upload-control">Importer une image<span class="upload-button"><span class="button-label">Choisir une image</span><span class="loader" aria-hidden="true"></span></span><input name="imageFile" type="file" accept="image/*" /></label>
+        </div>
+        <div class="editor-fields">
+          <div class="form-grid">
+            <label>ID stable<input class="field" name="id" value="${escapeAttr(item.id || "")}" required /></label>
+            <label>Titre<input class="field" name="titre" value="${escapeAttr(item.titre || "")}" required /></label>
+            <label>Artiste<input class="field" name="artiste" value="${escapeAttr(item.artiste || "")}" /></label>
+            <label>Prix<input class="field" name="prix" value="${escapeAttr(item.prix || "")}" /></label>
+            <label>Dimensions<input class="field" name="dimensions" value="${escapeAttr(item.dimensions || "")}" /></label>
+            <label>Technique<input class="field" name="technique" value="${escapeAttr(item.technique || "")}" /></label>
+            <label>Année<input class="field" name="annee" value="${escapeAttr(item.annee || "")}" /></label>
+            <label>Disponible<select class="field" name="disponible"><option value="true"${item.disponible !== false ? " selected" : ""}>Oui</option><option value="false"${item.disponible === false ? " selected" : ""}>Non</option></select></label>
+          </div>
+          <label>Description<textarea class="field textarea" name="description">${escapeHtml(item.description || "")}</textarea></label>
+        </div>
       </div>
-      <label>Description<textarea class="field textarea" name="description">${escapeHtml(item.description || "")}</textarea></label>
       <div class="actions">
         <button class="button" type="button" data-remove-editor-item>Supprimer</button>
       </div>
@@ -273,6 +281,8 @@ async function uploadEditorImage(event) {
   const password = document.querySelector('[name="password"]').value;
   const id = slugify(item.querySelector('[name="id"]').value);
   const imageField = item.querySelector('[name="image"]');
+  const uploadButton = item.querySelector(".upload-button");
+  const thumb = item.querySelector(".editor-thumb");
 
   if (!password) {
     status.textContent = "Entre le mot de passe de sauvegarde avant d'importer une image.";
@@ -287,6 +297,9 @@ async function uploadEditorImage(event) {
   }
 
   status.textContent = "Import de l'image en cours…";
+  item.classList.add("is-loading");
+  if (uploadButton) uploadButton.classList.add("is-loading");
+  input.disabled = true;
   try {
     const file = await compressImage(input.files[0]);
     const formData = new FormData();
@@ -303,11 +316,17 @@ async function uploadEditorImage(event) {
       throw new Error([result.error || "Import impossible", detail].filter(Boolean).join(" — "));
     }
     imageField.value = result.url;
+    if (thumb) {
+      thumb.outerHTML = `<img class="editor-thumb" src="${escapeAttr(result.url)}" alt="${escapeAttr(item.querySelector('[name="titre"]').value || "Tableau")}" loading="lazy" />`;
+    }
     status.textContent = "Image importée. Clique ensuite sur Enregistrer sur GitHub.";
   } catch (error) {
     status.textContent = error && error.message ? error.message : "Erreur inconnue.";
   } finally {
     input.value = "";
+    input.disabled = false;
+    item.classList.remove("is-loading");
+    if (uploadButton) uploadButton.classList.remove("is-loading");
   }
 }
 
@@ -315,8 +334,11 @@ async function submitCatalogue(event) {
   event.preventDefault();
   const form = event.currentTarget;
   const status = document.getElementById("adminStatus");
+  const submitButton = document.getElementById("saveCatalogueBtn");
   const payload = collectAdminCatalogue(form);
   status.textContent = "Sauvegarde en cours…";
+  form.classList.add("is-saving");
+  if (submitButton) submitButton.disabled = true;
   try {
     const response = await fetch("/.netlify/functions/save-catalogue", {
       method: "POST",
@@ -329,6 +351,9 @@ async function submitCatalogue(event) {
     status.textContent = "Catalogue sauvegardé sur GitHub.";
   } catch (error) {
     status.textContent = error && error.message ? error.message : "Erreur inconnue.";
+  } finally {
+    form.classList.remove("is-saving");
+    if (submitButton) submitButton.disabled = false;
   }
 }
 
