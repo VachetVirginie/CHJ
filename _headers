@@ -1,2 +1,5 @@
-/admin-qr
+/chj
+  Basic-Auth: admin:change-moi
+
+/chj/*
   Basic-Auth: admin:change-moi

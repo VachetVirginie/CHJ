@@ -7,11 +7,11 @@
   status = 200
 
 [[redirects]]
-  from = "/admin-qr"
+  from = "/chj"
   to = "/index.html"
   status = 200
 
 [[redirects]]
-  from = "/admin-editeur"
+  from = "/chj/*"
   to = "/index.html"
   status = 200

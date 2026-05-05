@@ -7,8 +7,9 @@ Site statique Netlify pour présenter des tableaux, générer des QR codes et mo
 ```text
 /                  Galerie publique
 /tableau/001       Fiche publique d'un tableau
-/admin-qr          Génération des QR codes
-/admin-editeur     Formulaire admin qui sauvegarde sur GitHub
+/chj               Espace de gestion
+/chj/qr            Génération des QR codes
+/chj/editeur       Formulaire admin qui sauvegarde sur GitHub
 ```
 
 ## Principe des QR codes
@@ -23,10 +24,10 @@ Site statique Netlify pour présenter des tableaux, générer des QR codes et mo
 Les pages admin sont protégées par `_headers` sur Netlify :
 
 ```text
-/admin-qr
+/chj
   Basic-Auth: admin:change-moi
 
-/admin-editeur
+/chj/*
   Basic-Auth: admin:change-moi
 ```
 
@@ -34,7 +35,7 @@ Change `change-moi` avant de mettre en ligne.
 
 ## Sauvegarde GitHub
 
-Le formulaire `/admin-editeur` appelle :
+Le formulaire `/chj/editeur` appelle :
 
 ```text
 /.netlify/functions/save-catalogue
@@ -80,10 +81,7 @@ Ne mets jamais le token dans le code. Il doit être uniquement dans les variable
 
 ## Images
 
-Dans `/admin-editeur`, chaque tableau a deux champs image :
-
-- `Image URL` pour coller une URL manuellement.
-- `Importer une image` pour envoyer une image vers GitHub.
+Dans `/chj/editeur`, chaque tableau permet d'importer une image vers GitHub.
 
 Quand une image est importée, elle est commitée dans le dossier configuré par :
 
@@ -91,13 +89,13 @@ Quand une image est importée, elle est commitée dans le dossier configuré par
 GITHUB_IMAGES_PATH=images
 ```
 
-Puis le champ `Image URL` est rempli automatiquement avec une URL du type :
+Puis l'image est enregistrée avec une URL du type :
 
 ```text
 https://raw.githubusercontent.com/UTILISATEUR/REPO/main/images/001.jpg
 ```
 
-Après l'import, clique sur `Enregistrer sur GitHub` pour sauvegarder cette URL dans le JSON.
+Après l'import, clique sur `Enregistrer` pour sauvegarder cette URL dans le JSON.
 
 Formats acceptés :
 

@@ -1,8 +1,9 @@
 const CONFIG = {
   dataUrl: "/.netlify/functions/get-catalogue",
   fallbackDataUrl: "/data/tableaux.example.json",
-  adminQrPath: "/admin-qr",
-  adminEditorPath: "/admin-editeur"
+  adminHubPath: "/chj",
+  adminQrPath: "/chj/qr",
+  adminEditorPath: "/chj/editeur"
 };
 
 const app = document.getElementById("app");
@@ -66,6 +67,10 @@ function updateSiteChrome(site) {
 
 function renderRoute() {
   const path = normalizePath(window.location.pathname);
+  if (path === CONFIG.adminHubPath) {
+    renderAdminHub();
+    return;
+  }
   if (path === CONFIG.adminQrPath) {
     renderQrCodes();
     return;
@@ -79,6 +84,20 @@ function renderRoute() {
     return;
   }
   renderGallery();
+}
+
+function renderAdminHub() {
+  app.innerHTML = `
+    <section class="qr-panel">
+      <p class="eyebrow">CHJ</p>
+      <h2>Espace de gestion</h2>
+      <p class="description">Choisis l'outil à ouvrir pour gérer le catalogue ou générer les QR codes.</p>
+      <div class="actions">
+        <a class="button primary" href="${CONFIG.adminEditorPath}" data-link>Éditer le catalogue</a>
+        <a class="button" href="${CONFIG.adminQrPath}" data-link>Voir les QR codes</a>
+      </div>
+    </section>
+  `;
 }
 
 function renderGallery() {
