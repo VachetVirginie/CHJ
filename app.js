@@ -289,17 +289,13 @@ async function uploadEditorImage(event) {
   status.textContent = "Import de l'image en cours…";
   try {
     const file = input.files[0];
-    const dataUrl = await fileToDataUrl(file);
+    const formData = new FormData();
+    formData.set("password", password);
+    formData.set("id", id);
+    formData.set("image", file, file.name);
     const response = await fetch("/.netlify/functions/upload-image", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        password,
-        id,
-        filename: file.name,
-        contentType: file.type,
-        dataUrl
-      })
+      body: formData
     });
     const result = await response.json().catch(() => ({}));
     if (!response.ok) {
@@ -412,15 +408,6 @@ function withCacheBust(path) {
   const url = new URL(path, window.location.origin);
   url.searchParams.set("t", Date.now());
   return url.href;
-}
-
-function fileToDataUrl(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(String(reader.result || ""));
-    reader.onerror = () => reject(new Error("Lecture du fichier impossible"));
-    reader.readAsDataURL(file);
-  });
 }
 
 function normalizePath(path) {

@@ -1,13 +1,23 @@
-const REQUIRED_ENV = ["GITHUB_TOKEN", "GITHUB_OWNER", "GITHUB_REPO", "GITHUB_BRANCH", "ADMIN_SAVE_PASSWORD"];
+const REQUIRED_ENV = [
+  "GITHUB_TOKEN",
+  "GITHUB_OWNER",
+  "GITHUB_REPO",
+  "GITHUB_BRANCH",
+  "ADMIN_SAVE_PASSWORD"
+];
 
 const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
 
 exports.handler = async (event) => {
-  if (event.httpMethod !== "POST") return jsonResponse(405, { error: "Méthode non autorisée" });
+  if (event.httpMethod !== "POST") {
+    return jsonResponse(405, { error: "Méthode non autorisée" });
+  }
 
   const missing = REQUIRED_ENV.filter((key) => !process.env[key]);
-  if (missing.length) return jsonResponse(500, { error: "Variables Netlify manquantes: " + missing.join(", ") });
+  if (missing.length) {
+    return jsonResponse(500, { error: "Variables Netlify manquantes: " + missing.join(", ") });
+  }
 
   try {
     const form = parseMultipartForm(event);
@@ -15,7 +25,10 @@ exports.handler = async (event) => {
     const id = slugify(form.fields.id);
     const image = form.files.image;
 
-    if (!password || password !== process.env.ADMIN_SAVE_PASSWORD) return jsonResponse(401, { error: "Mot de passe incorrect" });
+    if (!password || password !== process.env.ADMIN_SAVE_PASSWORD) {
+      return jsonResponse(401, { error: "Mot de passe incorrect" });
+    }
+
     if (!id) return jsonResponse(400, { error: "ID du tableau manquant" });
     if (!image) return jsonResponse(400, { error: "Image manquante" });
     if (!ALLOWED_TYPES.has(image.contentType)) return jsonResponse(400, { error: "Format image non accepté" });
@@ -31,7 +44,10 @@ exports.handler = async (event) => {
     const path = `${imagesPath}/${id}.${extension}`;
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponentPath(path)}`;
 
-    const current = await fetch(`${apiUrl}?ref=${encodeURIComponent(branch)}`, { headers: githubHeaders(token) });
+    const current = await fetch(`${apiUrl}?ref=${encodeURIComponent(branch)}`, {
+      headers: githubHeaders(token)
+    });
+
     let sha = null;
     if (current.ok) {
       const currentJson = await current.json();
@@ -55,7 +71,9 @@ exports.handler = async (event) => {
     });
 
     const savedJson = await saved.json().catch(() => null);
-    if (!saved.ok) return jsonResponse(saved.status, { error: "Écriture GitHub impossible", detail: savedJson || "Réponse GitHub illisible" });
+    if (!saved.ok) {
+      return jsonResponse(saved.status, { error: "Écriture GitHub impossible", detail: savedJson || "Réponse GitHub illisible" });
+    }
 
     return jsonResponse(200, {
       ok: true,
@@ -74,11 +92,13 @@ exports.handler = async (event) => {
 
 function parseMultipartForm(event) {
   const contentType = event.headers["content-type"] || event.headers["Content-Type"] || "";
-  const boundaryMatch = contentType.match(/boundary=(?:(?:"([^"]+)")|([^;]+))/i);
+  const boundaryMatch = contentType.match(/boundary=(?:(?:\"([^\"]+)\")|([^;]+))/i);
   if (!boundaryMatch) throw new Error("Boundary multipart introuvable");
 
   const boundary = boundaryMatch[1] || boundaryMatch[2];
-  const body = event.isBase64Encoded ? Buffer.from(event.body || "", "base64") : Buffer.from(event.body || "", "binary");
+  const body = event.isBase64Encoded
+    ? Buffer.from(event.body || "", "base64")
+    : Buffer.from(event.body || "", "binary");
   const delimiter = Buffer.from(`--${boundary}`);
   const fields = {};
   const files = {};
