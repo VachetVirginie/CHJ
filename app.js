@@ -232,6 +232,10 @@ function renderAdminEditor() {
       const item = button.closest(".editor-item");
       if (item) item.remove();
     }
+    const saveButton = event.target.closest("[data-save-editor-item]");
+    if (saveButton) {
+      document.getElementById("adminForm").requestSubmit();
+    }
   });
   document.getElementById("paintingsEditor").addEventListener("change", uploadEditorImage);
 }
@@ -261,6 +265,7 @@ function editorItemHtml(item = {}) {
         </div>
       </div>
       <div class="actions">
+        <button class="button primary" type="button" data-save-editor-item><span class="button-label">Enregistrer</span><span class="loader" aria-hidden="true"></span></button>
         <button class="button" type="button" data-remove-editor-item>Supprimer</button>
       </div>
     </article>
@@ -297,6 +302,7 @@ async function uploadEditorImage(event) {
   }
 
   status.textContent = "Import de l'image en cours…";
+  setPageBusy(true, "Import de l'image en cours…");
   item.classList.add("is-loading");
   if (uploadButton) uploadButton.classList.add("is-loading");
   input.disabled = true;
@@ -327,6 +333,7 @@ async function uploadEditorImage(event) {
     input.disabled = false;
     item.classList.remove("is-loading");
     if (uploadButton) uploadButton.classList.remove("is-loading");
+    setPageBusy(false);
   }
 }
 
@@ -337,6 +344,7 @@ async function submitCatalogue(event) {
   const submitButton = document.getElementById("saveCatalogueBtn");
   const payload = collectAdminCatalogue(form);
   status.textContent = "Sauvegarde en cours…";
+  setPageBusy(true, "Sauvegarde en cours…");
   form.classList.add("is-saving");
   if (submitButton) submitButton.disabled = true;
   try {
@@ -354,7 +362,13 @@ async function submitCatalogue(event) {
   } finally {
     form.classList.remove("is-saving");
     if (submitButton) submitButton.disabled = false;
+    setPageBusy(false);
   }
+}
+
+function setPageBusy(isBusy, message = "") {
+  document.body.classList.toggle("is-busy", isBusy);
+  document.body.dataset.busyMessage = isBusy ? message : "";
 }
 
 function collectAdminCatalogue(form) {
