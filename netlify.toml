@@ -10,3 +10,8 @@
   from = "/admin-qr"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/admin-editeur"
+  to = "/index.html"
+  status = 200

@@ -1,44 +1,92 @@
 # Galerie de tableaux
 
-Site statique pour présenter des tableaux avec des fiches accessibles par QR code.
+Site statique Netlify pour présenter des tableaux, générer des QR codes et modifier le catalogue depuis un formulaire admin qui pousse le JSON sur GitHub.
 
-## Principe
+## URLs
+
+```text
+/                  Galerie publique
+/tableau/001       Fiche publique d'un tableau
+/admin-qr          Génération des QR codes
+/admin-editeur     Formulaire admin qui sauvegarde sur GitHub
+```
+
+## Principe des QR codes
 
 - Les QR codes pointent vers des IDs stables.
 - Exemple : `/tableau/001`, `/tableau/002`, `/tableau/003`.
-- Tu peux changer le titre, le prix, le texte et l'image dans le JSON.
+- Tu peux changer le titre, le prix, le texte et l'image.
 - Ne change pas le champ `id` après avoir imprimé un QR code.
 
-## Page admin QR codes
+## Admin
 
-La page existe, mais elle n'est plus affichée dans le site public.
-En ligne sur Netlify, elle est protégée par Basic Auth via le fichier `_headers`.
-
-En local :
-
-```text
-http://localhost:8888/admin-qr
-```
-
-En ligne :
-
-```text
-https://ton-site.netlify.app/admin-qr
-```
-
-Identifiants par défaut :
-
-```text
-admin
-change-moi
-```
-
-Change le mot de passe dans `_headers` avant de mettre le site en ligne :
+Les pages admin sont protégées par `_headers` sur Netlify :
 
 ```text
 /admin-qr
-  Basic-Auth: admin:ton-mot-de-passe
+  Basic-Auth: admin:change-moi
+
+/admin-editeur
+  Basic-Auth: admin:change-moi
 ```
+
+Change `change-moi` avant de mettre en ligne.
+
+## Sauvegarde GitHub
+
+Le formulaire `/admin-editeur` appelle :
+
+```text
+/.netlify/functions/save-catalogue
+```
+
+Cette fonction commit le JSON dans GitHub avec l'API GitHub.
+
+## Variables Netlify obligatoires
+
+Dans Netlify, ajoute ces variables dans `Site configuration > Environment variables` :
+
+```text
+GITHUB_TOKEN
+GITHUB_OWNER
+GITHUB_REPO
+GITHUB_BRANCH
+GITHUB_JSON_PATH
+ADMIN_SAVE_PASSWORD
+```
+
+Exemple :
+
+```text
+GITHUB_OWNER=ton-compte
+GITHUB_REPO=galerie-tableaux
+GITHUB_BRANCH=main
+GITHUB_JSON_PATH=data/tableaux.example.json
+ADMIN_SAVE_PASSWORD=mot-de-passe-sauvegarde
+```
+
+## Token GitHub
+
+Crée un token GitHub avec le droit d'écriture sur le dépôt.
+
+Pour un fine-grained token :
+
+- Repository access : le dépôt du catalogue
+- Permissions > Contents : Read and write
+
+Ne mets jamais le token dans le code. Il doit être uniquement dans les variables Netlify.
+
+## Images
+
+Pour l'instant le formulaire modifie le champ `image` sous forme d'URL.
+
+Exemple :
+
+```text
+https://raw.githubusercontent.com/UTILISATEUR/REPO/main/images/001.jpg
+```
+
+L'upload direct d'image vers GitHub peut être ajouté ensuite avec une fonction dédiée.
 
 ## Format du JSON
 
@@ -46,7 +94,7 @@ Change le mot de passe dans `_headers` avant de mettre le site en ligne :
 {
   "site": {
     "nom": "Galerie Atelier",
-    "accroche": "Œuvres originales, fiches détaillées et accès direct par QR code.",
+    "accroche": "",
     "email": "contact@example.com",
     "whatsapp": "33600000000"
   },
@@ -67,36 +115,30 @@ Change le mot de passe dans `_headers` avant de mettre le site en ligne :
 }
 ```
 
-## JSON sur GitHub
+## Local
 
-Dans `app.js`, remplace `dataUrl` :
-
-```js
-const CONFIG = {
-  dataUrl: "https://raw.githubusercontent.com/UTILISATEUR/REPO/main/tableaux.json",
-  adminQrPath: "/admin-qr"
-};
-```
-
-## Relancer le serveur local
-
-Si le serveur tourne déjà, arrête-le dans le terminal avec `Ctrl + C`.
-
-Puis relance :
+Le serveur Python sert les routes propres mais ne simule pas les fonctions Netlify.
 
 ```bash
 npm run dev
 ```
 
-Ouvre :
+Pour tester les fonctions Netlify en local, utilise plutôt Netlify CLI :
 
-```text
-http://localhost:8888
+```bash
+netlify dev
 ```
 
-## Déployer sur Netlify
+## Déploiement Netlify
 
-Si Netlify est connecté à GitHub :
+Paramètres :
+
+```text
+Build command: vide
+Publish directory: .
+```
+
+Si le site est connecté à GitHub :
 
 ```bash
 git add .
@@ -104,22 +146,4 @@ git commit -m "Update gallery"
 git push
 ```
 
-Netlify relancera le déploiement automatiquement.
-
-Si tu déploies manuellement :
-
-- Va dans Netlify.
-- Ouvre ton site.
-- Va dans `Deploys`.
-- Clique sur `Trigger deploy`.
-- Choisis `Deploy site`.
-
-## Configuration Netlify
-
-Le fichier `netlify.toml` sert ces routes :
-
-```text
-/tableau/001
-/admin-qr
-```
-# CHJ
+Netlify redéploie automatiquement.

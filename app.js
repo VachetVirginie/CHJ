@@ -1,6 +1,8 @@
 const CONFIG = {
-  dataUrl: "/data/tableaux.example.json",
-  adminQrPath: "/admin-qr"
+  dataUrl: "/.netlify/functions/get-catalogue",
+  fallbackDataUrl: "/data/tableaux.example.json",
+  adminQrPath: "/admin-qr",
+  adminEditorPath: "/admin-editeur"
 };
 
 const app = document.getElementById("app");
@@ -23,8 +25,10 @@ async function init() {
 
 async function fetchCatalogue() {
   const response = await fetch(CONFIG.dataUrl, { cache: "no-store" });
-  if (!response.ok) throw new Error("HTTP " + response.status);
-  return response.json();
+  if (response.ok) return response.json();
+  const fallback = await fetch(CONFIG.fallbackDataUrl, { cache: "no-store" });
+  if (!fallback.ok) throw new Error("HTTP " + response.status);
+  return fallback.json();
 }
 
 function normalizeCatalogue(data) {
@@ -64,6 +68,10 @@ function renderRoute() {
   const path = normalizePath(window.location.pathname);
   if (path === CONFIG.adminQrPath) {
     renderQrCodes();
+    return;
+  }
+  if (path === CONFIG.adminEditorPath) {
+    renderAdminEditor();
     return;
   }
   if (path.startsWith("/tableau/")) {
@@ -189,6 +197,124 @@ function qrHtml(item) {
       </div>
     </article>
   `;
+}
+
+function renderAdminEditor() {
+  app.innerHTML = `
+    <section class="qr-panel">
+      <p class="eyebrow">Administration</p>
+      <h2>Éditeur du catalogue</h2>
+      <p class="description">Modifie les tableaux puis enregistre. La sauvegarde pousse le JSON dans GitHub via une fonction Netlify sécurisée.</p>
+      <form class="admin-form" id="adminForm">
+        <div class="form-grid">
+          <label>Nom de la galerie<input class="field" name="siteNom" value="${escapeAttr(catalogue.site.nom)}" /></label>
+          <label>Email<input class="field" name="siteEmail" value="${escapeAttr(catalogue.site.email)}" /></label>
+          <label>WhatsApp<input class="field" name="siteWhatsapp" value="${escapeAttr(catalogue.site.whatsapp)}" /></label>
+          <label>Mot de passe sauvegarde<input class="field" name="password" type="password" autocomplete="current-password" required /></label>
+        </div>
+        <div class="actions">
+          <button class="button" type="button" id="addPaintingBtn">Ajouter un tableau</button>
+          <button class="button primary" type="submit">Enregistrer sur GitHub</button>
+        </div>
+        <div id="adminStatus" class="admin-status" role="status"></div>
+        <section id="paintingsEditor" class="editor-list">
+          ${catalogue.tableaux.map(editorItemHtml).join("")}
+        </section>
+      </form>
+    </section>
+  `;
+
+  document.getElementById("addPaintingBtn").addEventListener("click", addEditorItem);
+  document.getElementById("adminForm").addEventListener("submit", submitCatalogue);
+  document.getElementById("paintingsEditor").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-remove-editor-item]");
+    if (!button) return;
+    const item = button.closest(".editor-item");
+    if (item) item.remove();
+  });
+}
+
+function editorItemHtml(item = {}) {
+  return `
+    <article class="editor-item">
+      <div class="form-grid">
+        <label>ID stable<input class="field" name="id" value="${escapeAttr(item.id || "")}" required /></label>
+        <label>Titre<input class="field" name="titre" value="${escapeAttr(item.titre || "")}" required /></label>
+        <label>Artiste<input class="field" name="artiste" value="${escapeAttr(item.artiste || "")}" /></label>
+        <label>Prix<input class="field" name="prix" value="${escapeAttr(item.prix || "")}" /></label>
+        <label>Dimensions<input class="field" name="dimensions" value="${escapeAttr(item.dimensions || "")}" /></label>
+        <label>Technique<input class="field" name="technique" value="${escapeAttr(item.technique || "")}" /></label>
+        <label>Année<input class="field" name="annee" value="${escapeAttr(item.annee || "")}" /></label>
+        <label>Image URL<input class="field" name="image" value="${escapeAttr(item.image || "")}" /></label>
+        <label>Disponible<select class="field" name="disponible"><option value="true"${item.disponible !== false ? " selected" : ""}>Oui</option><option value="false"${item.disponible === false ? " selected" : ""}>Non</option></select></label>
+      </div>
+      <label>Description<textarea class="field textarea" name="description">${escapeHtml(item.description || "")}</textarea></label>
+      <div class="actions">
+        <button class="button" type="button" data-remove-editor-item>Supprimer</button>
+      </div>
+    </article>
+  `;
+}
+
+function addEditorItem() {
+  const nextId = String(document.querySelectorAll(".editor-item").length + 1).padStart(3, "0");
+  document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml({ id: nextId, disponible: true }));
+}
+
+async function submitCatalogue(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const status = document.getElementById("adminStatus");
+  const payload = collectAdminCatalogue(form);
+  status.textContent = "Sauvegarde en cours…";
+  try {
+    const response = await fetch("/.netlify/functions/save-catalogue", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || "Sauvegarde impossible");
+    catalogue = normalizeCatalogue(payload.catalogue);
+    status.textContent = "Catalogue sauvegardé sur GitHub.";
+  } catch (error) {
+    status.textContent = error && error.message ? error.message : "Erreur inconnue.";
+  }
+}
+
+function collectAdminCatalogue(form) {
+  const data = new FormData(form);
+  const tableaux = [...document.querySelectorAll(".editor-item")].map((item) => {
+    const values = {};
+    item.querySelectorAll("[name]").forEach((field) => {
+      values[field.name] = field.value.trim();
+    });
+    return {
+      id: slugify(values.id),
+      titre: values.titre,
+      artiste: values.artiste,
+      description: values.description,
+      prix: values.prix,
+      dimensions: values.dimensions,
+      technique: values.technique,
+      annee: values.annee,
+      image: values.image,
+      disponible: values.disponible !== "false"
+    };
+  }).filter((item) => item.id && item.titre);
+
+  return {
+    password: String(data.get("password") || ""),
+    catalogue: {
+      site: {
+        nom: String(data.get("siteNom") || "").trim(),
+        accroche: "",
+        email: String(data.get("siteEmail") || "").trim(),
+        whatsapp: String(data.get("siteWhatsapp") || "").trim()
+      },
+      tableaux
+    }
+  };
 }
 
 function imageHtml(item, className) {
