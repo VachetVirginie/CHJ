@@ -41,6 +41,18 @@
       "annee": "2025",
       "image": "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=1200&q=80",
       "disponible": false
+    },
+    {
+      "id": "62",
+      "titre": "café",
+      "artiste": "",
+      "description": "ZDHAzdjAZDJadzja\naazdhzadhzadhazdfjh",
+      "prix": "450 €",
+      "dimensions": "",
+      "technique": "Huile sur toile",
+      "annee": "2023",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/004.jpg",
+      "disponible": false
     }
   ]
 }
