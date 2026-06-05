@@ -37,7 +37,7 @@ function normalizeCatalogue(data) {
   const tableaux = Array.isArray(data && data.tableaux) ? data.tableaux : [];
   return {
     site: {
-      nom: site.nom || "Galerie Atelier",
+      nom: site.nom || "Gallerie Charles H Jaillard",
       accroche: site.accroche || "Œuvres originales et fiches accessibles par QR code.",
       email: site.email || "contact@example.com",
       whatsapp: String(site.whatsapp || "").replace(/\D+/g, "")
@@ -130,14 +130,11 @@ function cardHtml(item) {
         ${imageHtml(item, "card-image")}
       </a>
       <div class="card-body">
-        <p class="meta">${escapeHtml(item.artiste)} · ${escapeHtml(item.annee)}</p>
         <h3>${escapeHtml(item.titre)}</h3>
-        <p class="specs">${escapeHtml(item.technique)} · ${escapeHtml(item.dimensions)}</p>
-        <div class="price">${escapeHtml(item.prix)}</div>
-        <span class="status${item.disponible ? "" : " sold"}">${item.disponible ? "Disponible" : "Vendu"}</span>
-        <div class="actions">
-          <a class="button" href="/tableau/${encodeURIComponent(item.id)}" data-link>Voir la fiche</a>
-        </div>
+        <p class="specs">${escapeHtml(item.technique)}</p>
+        <p class="specs">Format de la toile : ${escapeHtml(item.dimensions)}</p>
+        <p class="price">Prix : ${escapeHtml(item.prix)}</p>
+        <p class="status${item.disponible ? "" : " sold"}">${item.disponible ? "Disponible" : "Vendu"}</p>
       </div>
     </article>
   `;
@@ -164,7 +161,6 @@ function renderDetail(id) {
       <article class="detail-panel">
         <p class="eyebrow">Fiche tableau</p>
         <h2>${escapeHtml(item.titre)}</h2>
-        <p class="meta">${escapeHtml(item.artiste)}</p>
         <p class="description">${escapeHtml(item.description)}</p>
         <div class="price">${escapeHtml(item.prix)}</div>
         <span class="status${item.disponible ? "" : " sold"}">${item.disponible ? "Disponible" : "Vendu"}</span>
@@ -172,11 +168,8 @@ function renderDetail(id) {
           <div class="spec"><span>Dimensions</span><strong>${escapeHtml(item.dimensions)}</strong></div>
           <div class="spec"><span>Technique</span><strong>${escapeHtml(item.technique)}</strong></div>
           <div class="spec"><span>Année</span><strong>${escapeHtml(item.annee)}</strong></div>
-          <div class="spec"><span>URL QR code</span><strong>${escapeHtml(url)}</strong></div>
         </div>
         <div class="actions">
-          ${whatsappLink ? `<a class="button primary" href="${whatsappLink}" target="_blank" rel="noopener">WhatsApp</a>` : ""}
-          <a class="button" href="${mailLink}">Email</a>
           <a class="button" href="/" data-link>Retour galerie</a>
         </div>
       </article>
