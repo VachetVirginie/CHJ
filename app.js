@@ -103,19 +103,6 @@ function renderAdminHub() {
 function renderGallery() {
   const items = catalogue.tableaux;
   app.innerHTML = `
-    <section class="hero">
-      <div>
-        <p class="eyebrow">Catalogue d'œuvres</p>
-        <h1>${escapeHtml(catalogue.site.nom)}</h1>
-      </div>
-    </section>
-
-    <section class="toolbar">
-      <div>
-        <p class="eyebrow">${items.length} œuvre${items.length > 1 ? "s" : ""}</p>
-        <h2>Galerie</h2>
-      </div>
-    </section>
 
     <section class="grid" id="galleryGrid">
       ${items.map(cardHtml).join("")}
