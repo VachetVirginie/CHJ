@@ -28,7 +28,7 @@
       "technique": "Huile sur toile",
       "annee": "2024",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
-      "disponible": true
+      "disponible": false
     },
     {
       "id": "003",
@@ -65,6 +65,18 @@
       "annee": "2023",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/005.jpg",
       "disponible": false
+    },
+    {
+      "id": "004",
+      "titre": "Forêt Rouge",
+      "artiste": "Marie Dupont",
+      "description": "Œuvre abstraite inspirée de paysages imaginaires. Les contrastes rouges et bruns créent une atmosphère chaleureuse et enveloppante.",
+      "prix": "620 €",
+      "dimensions": "100 × 70 cm",
+      "technique": "Huile sur toile",
+      "annee": "2024",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
+      "disponible": true
     }
   ]
 }
