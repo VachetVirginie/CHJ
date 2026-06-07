@@ -295,9 +295,8 @@ function onDisponibleChange(event) {
     values[field.name] = field.value.trim();
   });
 
-  const newId = nextAvailableId();
-  const clone = {
-    id: newId,
+  const soldCopy = {
+    id: values.id,
     titre: values.titre,
     artiste: values.artiste,
     description: values.description,
@@ -306,11 +305,21 @@ function onDisponibleChange(event) {
     technique: values.technique,
     annee: values.annee,
     image: values.image,
-    disponible: true
+    disponible: false
   };
 
-  document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml(clone));
-  document.getElementById("adminStatus").textContent = `Tableau dupliqué avec l'id ${newId} (disponible). Enregistre pour valider.`;
+  const newId = nextAvailableId();
+
+  item.replaceWith(createEditorItemElement(editorItemHtml({ id: newId, disponible: true })));
+
+  document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml(soldCopy));
+  document.getElementById("adminStatus").textContent = `Tableau vendu archivé (id ${values.id}). Slot ${newId} créé vide et disponible. Enregistre pour valider.`;
+}
+
+function createEditorItemElement(html) {
+  const div = document.createElement("div");
+  div.innerHTML = html.trim();
+  return div.firstElementChild;
 }
 
 async function uploadEditorImage(event) {
