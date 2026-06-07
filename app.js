@@ -37,7 +37,7 @@ function normalizeCatalogue(data) {
   const tableaux = Array.isArray(data && data.tableaux) ? data.tableaux : [];
   return {
     site: {
-      nom: site.nom || "Gallerie Charles H Jaillard",
+      nom: site.nom || "Galerie Charles H Jaillard",
       accroche: site.accroche || "Œuvres originales et fiches accessibles par QR code.",
       email: site.email || "contact@example.com",
       whatsapp: String(site.whatsapp || "").replace(/\D+/g, "")

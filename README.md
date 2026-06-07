@@ -115,7 +115,7 @@ Taille maximum :
 ```json
 {
   "site": {
-    "nom": "Gallerie Charles H Jaillard",
+    "nom": "Galerie Charles H Jaillard",
     "accroche": "",
     "email": "contact@example.com",
     "whatsapp": "33600000000"
