@@ -252,8 +252,8 @@ function editorItemHtml(item = {}) {
         </div>
         <div class="editor-fields">
           <div class="form-grid">
-            <label>ID stable<input class="field" name="id" value="${escapeAttr(item.id || "")}" required /></label>
-            <label>Titre<input class="field" name="titre" value="${escapeAttr(item.titre || "")}" required /></label>
+            <label>ID stable<input class="field" name="id" value="${escapeAttr(item.id || "")}" /></label>
+            <label>Titre<input class="field" name="titre" value="${escapeAttr(item.titre || "")}" /></label>
             <label>Artiste<input class="field" name="artiste" value="${escapeAttr(item.artiste || "")}" /></label>
             <label>Prix<input class="field" name="prix" value="${escapeAttr(item.prix || "")}" /></label>
             <label>Dimensions<input class="field" name="dimensions" value="${escapeAttr(item.dimensions || "")}" /></label>
@@ -278,9 +278,13 @@ function addEditorItem() {
 }
 
 function nextAvailableId() {
-  const usedIds = new Set([...document.querySelectorAll('.editor-item [name="id"]')].map((el) => el.value.trim()));
+  const usedNums = new Set(
+    [...document.querySelectorAll('.editor-item [name="id"]')]
+      .map((el) => parseInt(el.value.trim(), 10))
+      .filter((n) => !isNaN(n))
+  );
   let n = 1;
-  while (usedIds.has(String(n).padStart(3, "0"))) n++;
+  while (usedNums.has(n)) n++;
   return String(n).padStart(3, "0");
 }
 
