@@ -7,18 +7,6 @@
   },
   "tableaux": [
     {
-      "id": "001",
-      "titre": "Soleil Bleu",
-      "artiste": "Marie Dupont",
-      "description": "Peinture acrylique originale sur toile. Une composition lumineuse pensée pour apporter une présence douce et contemporaine dans un intérieur.",
-      "prix": "450 €",
-      "dimensions": "60 × 80 cm",
-      "technique": "Acrylique sur toile",
-      "annee": "2025",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/001.jpg",
-      "disponible": true
-    },
-    {
       "id": "002",
       "titre": "Forêt Rouge",
       "artiste": "Marie Dupont",
@@ -77,6 +65,18 @@
       "annee": "2024",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
       "disponible": true
+    },
+    {
+      "id": "006",
+      "titre": "Soleil Bleu",
+      "artiste": "Marie Dupont",
+      "description": "Peinture acrylique originale sur toile. Une composition lumineuse pensée pour apporter une présence douce et contemporaine dans un intérieur.",
+      "prix": "450 €",
+      "dimensions": "60 × 80 cm",
+      "technique": "Acrylique sur toile",
+      "annee": "2025",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/001.jpg",
+      "disponible": false
     }
   ]
 }
