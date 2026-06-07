@@ -101,7 +101,7 @@ function renderAdminHub() {
 }
 
 function renderGallery() {
-  const items = catalogue.tableaux;
+  const items = catalogue.tableaux.filter((item) => item.titre && item.image);
   app.innerHTML = `
 
     <section class="grid" id="galleryGrid">
@@ -295,25 +295,10 @@ function onDisponibleChange(event) {
     values[field.name] = field.value.trim();
   });
 
-  const soldCopy = {
-    id: values.id,
-    titre: values.titre,
-    artiste: values.artiste,
-    description: values.description,
-    prix: values.prix,
-    dimensions: values.dimensions,
-    technique: values.technique,
-    annee: values.annee,
-    image: values.image,
-    disponible: false
-  };
-
   const newId = nextAvailableId();
 
-  item.replaceWith(createEditorItemElement(editorItemHtml({ id: newId, disponible: true })));
-
-  document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml(soldCopy));
-  document.getElementById("adminStatus").textContent = `Tableau vendu archivé (id ${values.id}). Slot ${newId} créé vide et disponible. Enregistre pour valider.`;
+  document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml({ id: newId, disponible: true }));
+  document.getElementById("adminStatus").textContent = `Tableau ${values.id} marqué vendu. Nouveau slot ${newId} créé vide et disponible. Enregistre pour valider.`;
 }
 
 function createEditorItemElement(html) {
@@ -435,7 +420,7 @@ function collectAdminCatalogue(form) {
       image: values.image,
       disponible: values.disponible !== "false"
     };
-  }).filter((item) => item.id && item.titre);
+  }).filter((item) => item.id);
 
   return {
     password: String(data.get("password") || ""),
