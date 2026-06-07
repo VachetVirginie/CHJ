@@ -7,18 +7,6 @@
   },
   "tableaux": [
     {
-      "id": "002",
-      "titre": "Forêt Rouge",
-      "artiste": "Marie Dupont",
-      "description": "Œuvre abstraite inspirée de paysages imaginaires. Les contrastes rouges et bruns créent une atmosphère chaleureuse et enveloppante.",
-      "prix": "620 €",
-      "dimensions": "100 × 70 cm",
-      "technique": "Huile sur toile",
-      "annee": "2024",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
-      "disponible": true
-    },
-    {
       "id": "003",
       "titre": "Silence Doré",
       "artiste": "Marie Dupont",
@@ -76,6 +64,18 @@
       "technique": "Acrylique sur toile",
       "annee": "2025",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/001.jpg",
+      "disponible": false
+    },
+    {
+      "id": "001",
+      "titre": "Forêt Rouge",
+      "artiste": "Marie Dupont",
+      "description": "Œuvre abstraite inspirée de paysages imaginaires. Les contrastes rouges et bruns créent une atmosphère chaleureuse et enveloppante.",
+      "prix": "620 €",
+      "dimensions": "100 × 70 cm",
+      "technique": "Huile sur toile",
+      "annee": "2024",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
       "disponible": false
     }
   ]
