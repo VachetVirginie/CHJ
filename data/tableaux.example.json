@@ -44,15 +44,15 @@
     },
     {
       "id": "004",
-      "titre": "Soleil Bleu",
+      "titre": "Forêt Rouge",
       "artiste": "Marie Dupont",
-      "description": "Peinture acrylique originale sur toile. Une composition lumineuse pensée pour apporter une présence douce et contemporaine dans un intérieur.",
-      "prix": "450 €",
-      "dimensions": "60 × 80 cm",
-      "technique": "Acrylique sur toile",
-      "annee": "2025",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/001.jpg",
-      "disponible": false
+      "description": "Œuvre abstraite inspirée de paysages imaginaires. Les contrastes rouges et bruns créent une atmosphère chaleureuse et enveloppante.",
+      "prix": "620 €",
+      "dimensions": "100 × 70 cm",
+      "technique": "Huile sur toile",
+      "annee": "2024",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
+      "disponible": true
     }
   ]
 }
