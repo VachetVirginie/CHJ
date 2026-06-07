@@ -45,13 +45,25 @@
     {
       "id": "62",
       "titre": "café",
-      "artiste": "",
+      "artiste": "Artiste",
       "description": "ZDHAzdjAZDJadzja\naazdhzadhzadhazdfjh",
       "prix": "450 €",
-      "dimensions": "",
+      "dimensions": "—",
       "technique": "Huile sur toile",
       "annee": "2023",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/004.jpg",
+      "disponible": false
+    },
+    {
+      "id": "005",
+      "titre": "Port de Cadaquès",
+      "artiste": "Charles H Jaillard",
+      "description": "Port de Cadaquès",
+      "prix": "620 €",
+      "dimensions": "65cm x 55 cm",
+      "technique": "Huile sur toile",
+      "annee": "2023",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/005.jpg",
       "disponible": false
     }
   ]
