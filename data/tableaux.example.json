@@ -52,7 +52,7 @@
       "technique": "Huile sur toile",
       "annee": "2023",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/004.jpg",
-      "disponible": false
+      "disponible": true
     },
     {
       "id": "005",
