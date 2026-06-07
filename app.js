@@ -277,10 +277,12 @@ function addEditorItem() {
   document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml({ id: nextId, disponible: true }));
 }
 
-function nextAvailableId() {
+function nextAvailableId(excludeId = "") {
   const usedNums = new Set(
     [...document.querySelectorAll('.editor-item [name="id"]')]
-      .map((el) => parseInt(el.value.trim(), 10))
+      .map((el) => el.value.trim())
+      .filter((v) => v !== excludeId)
+      .map((v) => parseInt(v, 10))
       .filter((n) => !isNaN(n))
   );
   let n = 1;
@@ -300,7 +302,7 @@ function onDisponibleChange(event) {
   });
 
   const originalId = values.id;
-  const newId = nextAvailableId();
+  const newId = nextAvailableId(originalId);
 
   const soldCopy = {
     id: newId,
