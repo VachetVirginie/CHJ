@@ -31,7 +31,7 @@
       "disponible": true
     },
     {
-      "id": "005",
+      "id": "003",
       "titre": "Port de Cadaquès",
       "artiste": "Charles H Jaillard",
       "description": "Port de Cadaquès",
@@ -40,18 +40,6 @@
       "technique": "Huile sur toile",
       "annee": "2023",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/005.jpg",
-      "disponible": true
-    },
-    {
-      "id": "003",
-      "titre": "Forêt Rouge",
-      "artiste": "Marie Dupont",
-      "description": "Œuvre abstraite inspirée de paysages imaginaires. Les contrastes rouges et bruns créent une atmosphère chaleureuse et enveloppante.",
-      "prix": "620 €",
-      "dimensions": "100 × 70 cm",
-      "technique": "Huile sur toile",
-      "annee": "2024",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
       "disponible": true
     },
     {
