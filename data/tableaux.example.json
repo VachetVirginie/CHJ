@@ -7,15 +7,15 @@
   },
   "tableaux": [
     {
-      "id": "002",
-      "titre": "café",
+      "id": "001",
+      "titre": "Sans titre",
       "artiste": "Artiste",
-      "description": "ZDHAzdjAZDJadzja\naazdhzadhzadhazdfjh",
-      "prix": "450 €",
+      "description": "Description à compléter.",
+      "prix": "Prix sur demande",
       "dimensions": "—",
-      "technique": "Huile sur toile",
-      "annee": "2023",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/004.jpg",
+      "technique": "—",
+      "annee": "—",
+      "image": "",
       "disponible": true
     },
     {
@@ -64,6 +64,18 @@
       "technique": "Technique mixte",
       "annee": "2025",
       "image": "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=1200&q=80",
+      "disponible": false
+    },
+    {
+      "id": "007",
+      "titre": "café",
+      "artiste": "Artiste",
+      "description": "ZDHAzdjAZDJadzja\naazdhzadhzadhazdfjh",
+      "prix": "450 €",
+      "dimensions": "—",
+      "technique": "Huile sur toile",
+      "annee": "2023",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/004.jpg",
       "disponible": false
     }
   ]
