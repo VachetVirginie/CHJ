@@ -81,7 +81,7 @@ a {
 .site-header,
 .site-footer,
 .app {
-  width: min(560px, calc(100% - 32px));
+  width: min(1200px, calc(100% - 32px));
   margin-inline: auto;
 }
 
@@ -110,7 +110,7 @@ a {
 
 .brand-title {
   font-family: "Raleway", system-ui, sans-serif;
-  font-size: 1.8rem;
+  font-size: 2.6rem;
   font-weight: 300;
   color: #ffffff;
   margin: 0 0 6px;
@@ -126,8 +126,8 @@ a {
 }
 
 .brand-sun {
-  width: 80px;
-  height: 80px;
+  width: 110px;
+  height: 110px;
   flex-shrink: 0;
   opacity: 1;
   position: relative;
@@ -136,7 +136,7 @@ a {
 
 .brand-contact {
   font-family: "Poppins", system-ui, sans-serif;
-  font-size: 0.82rem;
+  font-size: 1.05rem;
   color: #ffffff;
   margin: 0;
   font-weight: 400;
@@ -239,7 +239,7 @@ h3 {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
   width: 100%;
 }
@@ -632,13 +632,13 @@ body.is-busy .app::after {
   }
 
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .site-header,
   .site-footer,
   .app {
-    width: calc(100% - 32px);
+    width: min(1200px, calc(100% - 32px));
   }
 
   .qr-grid,
