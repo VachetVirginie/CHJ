@@ -187,6 +187,7 @@ function qrHtml(item) {
         <img src="${qrUrl}" alt="QR code ${escapeHtml(item.titre)}" />
       </a>
       <div>
+        <p class="meta">N° ${escapeHtml(item.id)}</p>
         <h3>${escapeHtml(item.titre)}</h3>
         <p class="url">${escapeHtml(url)}</p>
         <div class="actions">
@@ -236,6 +237,7 @@ function renderAdminEditor() {
     }
   });
   document.getElementById("paintingsEditor").addEventListener("change", uploadEditorImage);
+  document.getElementById("paintingsEditor").addEventListener("change", onDisponibleChange);
 }
 
 function editorItemHtml(item = {}) {
@@ -271,8 +273,44 @@ function editorItemHtml(item = {}) {
 }
 
 function addEditorItem() {
-  const nextId = String(document.querySelectorAll(".editor-item").length + 1).padStart(3, "0");
+  const nextId = nextAvailableId();
   document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml({ id: nextId, disponible: true }));
+}
+
+function nextAvailableId() {
+  const usedIds = new Set([...document.querySelectorAll('.editor-item [name="id"]')].map((el) => el.value.trim()));
+  let n = 1;
+  while (usedIds.has(String(n).padStart(3, "0"))) n++;
+  return String(n).padStart(3, "0");
+}
+
+function onDisponibleChange(event) {
+  const select = event.target.closest('select[name="disponible"]');
+  if (!select || select.value !== "false") return;
+  const item = select.closest(".editor-item");
+  if (!item) return;
+
+  const values = {};
+  item.querySelectorAll("[name]").forEach((field) => {
+    values[field.name] = field.value.trim();
+  });
+
+  const newId = nextAvailableId();
+  const clone = {
+    id: newId,
+    titre: values.titre,
+    artiste: values.artiste,
+    description: values.description,
+    prix: values.prix,
+    dimensions: values.dimensions,
+    technique: values.technique,
+    annee: values.annee,
+    image: values.image,
+    disponible: true
+  };
+
+  document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml(clone));
+  document.getElementById("adminStatus").textContent = `Tableau dupliqué avec l'id ${newId} (disponible). Enregistre pour valider.`;
 }
 
 async function uploadEditorImage(event) {
