@@ -295,10 +295,26 @@ function onDisponibleChange(event) {
     values[field.name] = field.value.trim();
   });
 
+  const originalId = values.id;
   const newId = nextAvailableId();
 
-  document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml({ id: newId, disponible: true }));
-  document.getElementById("adminStatus").textContent = `Tableau ${values.id} marqué vendu. Nouveau slot ${newId} créé vide et disponible. Enregistre pour valider.`;
+  const soldCopy = {
+    id: newId,
+    titre: values.titre,
+    artiste: values.artiste,
+    description: values.description,
+    prix: values.prix,
+    dimensions: values.dimensions,
+    technique: values.technique,
+    annee: values.annee,
+    image: values.image,
+    disponible: false
+  };
+
+  item.replaceWith(createEditorItemElement(editorItemHtml({ id: originalId, disponible: true })));
+
+  document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml(soldCopy));
+  document.getElementById("adminStatus").textContent = `Données transférées vers l'id ${newId} (vendu). Slot ${originalId} vidé et disponible. Enregistre pour valider.`;
 }
 
 function createEditorItemElement(html) {
