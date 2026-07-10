@@ -15,34 +15,20 @@
     <a class="brand" href="/" aria-label="Accueil galerie">
       <div class="brand-top">
         <div class="brand-title-wrap">
-          <p class="brand-title"><span class="brand-galerie">Galerie</span> <span class="brand-name">Charles H Jaillard</span></p>
+          <div class="brand-title-row">
+            <p class="brand-title"><span class="brand-galerie">Galerie</span> <span class="brand-name">Charles H Jaillard</span></p>
+            <button type="button" class="bio-trigger" aria-label="Biographie">
+              <img src="images/IconeBio.png" alt="" aria-hidden="true" />
+            </button>
+          </div>
+          <div class="brand-contact-wrap">
+            <p class="brand-contact">Contact : 06 29 47 08 66</p>
+            <p class="brand-contact">cs.jaillard@gmail.com</p>
+          </div>
           <div class="brand-line"></div>
         </div>
-        <svg class="brand-sun" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="50" cy="50" r="14" stroke="#ffffff" stroke-width="2" fill="none"/>
-          <!-- rayons cardinaux longs -->
-          <line x1="50" y1="4"  x2="50" y2="26" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="50" y1="74" x2="50" y2="96" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="4"  y1="50" x2="26" y2="50" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="74" y1="50" x2="96" y2="50" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
-          <!-- rayons diagonaux mi-longs -->
-          <line x1="20" y1="20" x2="31" y2="31" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-          <line x1="69" y1="69" x2="80" y2="80" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-          <line x1="80" y1="20" x2="69" y2="31" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-          <line x1="20" y1="80" x2="31" y2="69" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-          <!-- rayons intermédiaires courts irréguliers -->
-          <line x1="50" y1="11" x2="50" y2="19" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" transform="rotate(22.5 50 50)"/>
-          <line x1="50" y1="11" x2="50" y2="18" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" transform="rotate(67.5 50 50)"/>
-          <line x1="50" y1="11" x2="50" y2="19" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" transform="rotate(112.5 50 50)"/>
-          <line x1="50" y1="11" x2="50" y2="17" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" transform="rotate(157.5 50 50)"/>
-          <line x1="50" y1="11" x2="50" y2="19" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" transform="rotate(202.5 50 50)"/>
-          <line x1="50" y1="11" x2="50" y2="18" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" transform="rotate(247.5 50 50)"/>
-          <line x1="50" y1="11" x2="50" y2="19" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" transform="rotate(292.5 50 50)"/>
-          <line x1="50" y1="11" x2="50" y2="17" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" transform="rotate(337.5 50 50)"/>
-        </svg>
+        <img class="brand-sun" src="images/Soleil.png" alt="" aria-hidden="true" />
       </div>
-      <p class="brand-contact">Contact : 06 29 47 08 66</p>
-      <p class="brand-contact">cs.jaillard@gmail.com</p>
     </a>
   </header>
 
@@ -51,6 +37,42 @@
   <footer class="site-footer">
     <p></p>
   </footer>
+
+  <div class="bio-modal" id="bioModal" role="dialog" aria-modal="true" aria-labelledby="bioTitle" hidden>
+    <div class="bio-modal-backdrop" data-close-modal></div>
+    <div class="bio-modal-panel">
+      <button type="button" class="bio-modal-close" aria-label="Fermer" data-close-modal>&times;</button>
+      <div class="bio-modal-layout">
+        <div class="bio-modal-image">
+          <img src="images/ch.jpg" alt="Charles H Jaillard" />
+        </div>
+        <div class="bio-modal-body">
+          <h2 id="bioTitle">Faisons connaissance !</h2>
+          <svg class="bio-modal-sun" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="50" cy="50" r="14" stroke="#ffffff" stroke-width="2" fill="none"/>
+            <line x1="50" y1="4" x2="50" y2="26" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="50" y1="74" x2="50" y2="96" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="4" y1="50" x2="26" y2="50" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="74" y1="50" x2="96" y2="50" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="20" y1="20" x2="31" y2="31" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="69" y1="69" x2="80" y2="80" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="80" y1="20" x2="69" y2="31" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="20" y1="80" x2="31" y2="69" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <div class="bio-modal-content">
+            <p>Pour faire court, voici mon top 5 des révélations essentielles sur moi !</p>
+            <ol>
+              <li><strong>Coloriste de profession :</strong> mon métier de graphiste-illustrateur m'a amené à passer la première partie de ma vie à harmoniser les couleurs et à chercher le cadrage parfait pour des commandes. Aujourd'hui, j'apprécie de pouvoir peindre ce qui me plait en mettant à profit mon expérience passée. C'est du pur plaisir !</li>
+              <li><strong>Tourné vers le soleil :</strong> on peut dire que mes toiles sont plutôt vibrantes et colorées. Je cherche avant tout à capter la lumière et la douceur du Sud dans mes toiles. Tristounet, je ne sais pas faire.</li>
+              <li><strong>Impressionniste, mais version moderne :</strong> je tente de capter l'atmosphère façon impressionniste, en y ajoutant des touches de spontanéité avec une approche résolument moderne et graphique.</li>
+              <li><strong>Collectionneur de détails :</strong> j'aime beaucoup observer les effets de lumière, les reflets et à imaginer comment les peindre. Mon travail commence souvent sur le terrain : je pars en "reportage photo" pour rapporter des sensations visuelles, des atmosphères et des détails éphémères, une silhouette fugace que je ne pourrai pas observer en peignant sur le motif. Cela m'aide à nourrir ma mémoire visuelle avant de transposer ces éléments sur la toile.</li>
+              <li><strong>Un brin contemplatif ! :</strong> mon processus créatif est plutôt laborieux ! J'ai besoin de me mettre en condition et le déclic doit se faire pour que je puisse sortir mes couleurs à l'huile ... C'est une démarche artistique hautement intellectuelle et cérébrale (!)... même si mon épouse appelle plutôt ça "regarder les mouches voler".</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="/app.js" defer></script>
 </body>

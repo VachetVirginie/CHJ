@@ -22,6 +22,44 @@ async function init() {
   } catch (error) {
     renderError("Impossible de charger le catalogue.", "Vérifie l'URL du fichier JSON et sa disponibilité publique.");
   }
+  initBioModal();
+}
+
+function initBioModal() {
+  const trigger = document.querySelector(".bio-trigger");
+  const modal = document.getElementById("bioModal");
+  if (!trigger || !modal) return;
+
+  const closeButtons = modal.querySelectorAll("[data-close-modal]");
+
+  function openModal() {
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    closeButtons[0]?.focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    trigger.focus();
+  }
+
+  trigger.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    openModal();
+  });
+  closeButtons.forEach((button) => button.addEventListener("click", closeModal));
+  modal.addEventListener("click", (event) => {
+    if (event.target.classList.contains("bio-modal-backdrop")) {
+      closeModal();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) {
+      closeModal();
+    }
+  });
 }
 
 async function fetchCatalogue() {
