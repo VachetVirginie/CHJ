@@ -77,6 +77,18 @@
       "annee": "2023",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/005.jpg",
       "disponible": false
+    },
+    {
+      "id": "008",
+      "titre": "Port d'Ajaccio",
+      "artiste": "CH Jaillard",
+      "description": "L'hôtel de ville et les palmiers qui bordent  le quai Napoléon avec les terrasses de cafés qui font face aux bateaux.",
+      "prix": "630€",
+      "dimensions": "60 x 60 cm",
+      "technique": "Huile sur lin. Mixte",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/008.jpg",
+      "disponible": true
     }
   ]
 }
