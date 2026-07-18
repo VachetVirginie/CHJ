@@ -19,6 +19,18 @@
       "disponible": true
     },
     {
+      "id": "003",
+      "titre": "Lac du Bourget",
+      "artiste": "CH Jaillard",
+      "description": "Cette peinture représente des baigneurs profitant d'une berge ombragée par une rangée d'arbres, ouvrant sur la vaste étendue bleue et lumineuse du lac du Bourget.\nLe rendu artistique se distingue par une technique  impressionniste au couteau, visible à travers d'épaisses touches texturées qui structurent vigoureusement le feuillage et le sol.\n\nLes contrastes chromatiques puissants, opposant les verts vibrants de la végétation aux bleus profonds de l'eau et aux éclats de lumière vive, insufflent une belle énergie estivale à la scène.",
+      "prix": "540€",
+      "dimensions": "60 x 50 cm",
+      "technique": "Huile sur toile de lin. Couteaux et pinceaux.",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/003.jpg",
+      "disponible": true
+    },
+    {
       "id": "004",
       "titre": "Paysage de la Drôme",
       "artiste": "CH Jaillard",
