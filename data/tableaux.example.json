@@ -8,14 +8,14 @@
   "tableaux": [
     {
       "id": "001",
-      "titre": "Sans titre",
-      "artiste": "Artiste",
-      "description": "Description à compléter.",
-      "prix": "Prix sur demande",
-      "dimensions": "—",
-      "technique": "—",
+      "titre": "Portofino",
+      "artiste": "CH Jaillard",
+      "description": "Ambiance méditerranéenne et estivale du port de Portofino. On y voit un alignement de façades typiques aux tons chauds (ocre, jaune, rose) surplombant des terrasses animées au bord de l'eau.",
+      "prix": "936€",
+      "dimensions": "80 cm x 65 cm",
+      "technique": "Huile sur lin",
       "annee": "—",
-      "image": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/001.jpg",
       "disponible": true
     },
     {
