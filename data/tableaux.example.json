@@ -32,15 +32,15 @@
     },
     {
       "id": "005",
-      "titre": "Soleil Bleu",
-      "artiste": "Marie Dupont",
-      "description": "Peinture acrylique originale sur toile. Une composition lumineuse pensée pour apporter une présence douce et contemporaine dans un intérieur.",
-      "prix": "450 €",
-      "dimensions": "60 × 80 cm",
-      "technique": "Acrylique sur toile",
-      "annee": "2025",
+      "titre": "Plage de Cavalière",
+      "artiste": "CH Jaillard",
+      "description": "Peinture huile originale sur toile. Une composition lumineuse pensée pour apporter une présence douce et contemporaine dans un intérieur. Plage Cavalière au Lavandou.",
+      "prix": "430 €",
+      "dimensions": "55 cm x 46 cm",
+      "technique": "huile sur lin",
+      "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/001.jpg",
-      "disponible": false
+      "disponible": true
     },
     {
       "id": "006",
