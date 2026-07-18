@@ -44,14 +44,14 @@
     },
     {
       "id": "006",
-      "titre": "Silence Doré",
-      "artiste": "Marie Dupont",
-      "description": "Tableau minimaliste aux reflets dorés, idéal pour une ambiance élégante et apaisée.",
-      "prix": "780 €",
-      "dimensions": "90 × 90 cm",
-      "technique": "Technique mixte",
-      "annee": "2025",
-      "image": "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=1200&q=80",
+      "titre": "Le parasol bleu",
+      "artiste": "CH Jaillard",
+      "description": "La composition utilise des formes simples et des touches de peinture visibles pour capturer l'ambiance détendue des vacances au bord de la mer.",
+      "prix": "",
+      "dimensions": "30 x 30 cm",
+      "technique": "Huile sur lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/006.jpg",
       "disponible": false
     },
     {
