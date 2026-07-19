@@ -113,6 +113,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/005.jpg",
       "disponible": true
+    },
+    {
+      "id": "010",
+      "titre": "Les dernières nouvelles",
+      "artiste": "CH Jaillard",
+      "description": "Les dernières nouvelles.... Un moment de tranquillité à l'ombre.",
+      "prix": "160€",
+      "dimensions": "30 x30 cm",
+      "technique": "Huile sur toile de lin.",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/010.jpg",
+      "disponible": true
     }
   ]
 }
