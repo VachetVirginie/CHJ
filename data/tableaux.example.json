@@ -26,7 +26,7 @@
       "prix": "540€",
       "dimensions": "60 x 50 cm",
       "technique": "Huile sur toile de lin. Couteaux et pinceaux.",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/003.jpg",
       "disponible": true
     },
@@ -38,20 +38,8 @@
       "prix": "300€ encadré",
       "dimensions": "40 cm x 40 cm",
       "technique": "Huile sur toile",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
-      "disponible": true
-    },
-    {
-      "id": "005",
-      "titre": "Plage de Cavalière",
-      "artiste": "CH Jaillard",
-      "description": "Peinture huile originale sur toile. Une composition lumineuse pensée pour apporter une présence douce et contemporaine dans un intérieur. Plage Cavalière au Lavandou.",
-      "prix": "430 €",
-      "dimensions": "55 cm x 46 cm",
-      "technique": "huile sur lin",
-      "annee": "",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/001.jpg",
       "disponible": true
     },
     {
@@ -59,10 +47,10 @@
       "titre": "Le parasol bleu",
       "artiste": "CH Jaillard",
       "description": "La composition utilise des formes simples et des touches de peinture visibles pour capturer l'ambiance détendue des vacances au bord de la mer.",
-      "prix": "",
+      "prix": "Prix sur demande",
       "dimensions": "30 x 30 cm",
       "technique": "Huile sur lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/006.jpg",
       "disponible": false
     },
@@ -71,10 +59,10 @@
       "titre": "Pause café",
       "artiste": "CH Jaillard",
       "description": "Ce tableau peint à l'huile représente une scène de café conviviale, où un homme au chapeau blanc et une femme installée de profil partagent un moment autour d'une table. À l'arrière-plan, un serveur vêtu d'une chemise rose vif s'approche en portant un plateau chargé de verres et de tasses. L'ensemble de la scène se détache sur un fond bleu intense, capturé avec une touche picturale texturée et dynamique.",
-      "prix": "",
+      "prix": "Prix sur demande",
       "dimensions": "50cm x 50cm",
       "technique": "Huile sur toile",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/004.jpg",
       "disponible": false
     },
@@ -83,7 +71,7 @@
       "titre": "Port de Cadaquès",
       "artiste": "Charles H Jaillard",
       "description": "Ce tableau de style naïf dépeint la vie animée d'un petit port de pêche méditerranéen, évoquant le charme du port de Cadaqués.\nAu premier plan, de nombreuses embarcations et barques colorées naviguent sur une eau bleue ou sont échouées sur le sable. L'arrière-plan est dominé par des maisons blanches aux volets et portes contrastés (bleus, rouges, verts), autour desquelles s'affairent une multitude de petits personnages qui donnent une atmosphère chaleureuse et vivante à la scène.",
-      "prix": "",
+      "prix": "Prix sur demande",
       "dimensions": "80cm x 65 cm",
       "technique": "Huile sur toile",
       "annee": "2023",
@@ -98,7 +86,7 @@
       "prix": "630€",
       "dimensions": "60 x 60 cm",
       "technique": "Huile sur lin. Mixte",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/008.jpg",
       "disponible": true
     },
@@ -110,8 +98,20 @@
       "prix": "450 €",
       "dimensions": "50 x 50 cm",
       "technique": "Huile sur toile de lin. Technique mixte.",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/009.jpg",
+      "disponible": true
+    },
+    {
+      "id": "005",
+      "titre": "Sans titre",
+      "artiste": "",
+      "description": "Champs de blé et de lavande.",
+      "prix": "",
+      "dimensions": "55 x 38 cm",
+      "technique": "Huile sur toile de lin. Couteau.",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/005.jpg",
       "disponible": true
     }
   ]
