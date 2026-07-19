@@ -245,6 +245,18 @@
       "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/020.jpg",
       "disponible": true
+    },
+    {
+      "id": "021",
+      "titre": "Pont ferroviaire",
+      "artiste": "CH Jaillard",
+      "description": "Pont ferroviaire Kitchener à Lyon surplombant la Saône.",
+      "prix": "450 €",
+      "dimensions": "50 x 50 cm",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/021.jpg",
+      "disponible": true
     }
   ]
 }
