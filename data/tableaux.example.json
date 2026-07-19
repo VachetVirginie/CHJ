@@ -101,6 +101,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/008.jpg",
       "disponible": true
+    },
+    {
+      "id": "009",
+      "titre": "Perspective provençale",
+      "artiste": "CH Jaillard",
+      "description": "Paysage de la Drôme provençale , du coté de Grignan.",
+      "prix": "450 €",
+      "dimensions": "50 x 50 cm",
+      "technique": "Huile sur toile de lin. Technique mixte.",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/009.jpg",
+      "disponible": true
     }
   ]
 }
