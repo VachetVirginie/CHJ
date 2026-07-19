@@ -91,6 +91,18 @@
       "disponible": true
     },
     {
+      "id": "008",
+      "titre": "Sans titre",
+      "artiste": "Artiste",
+      "description": "Champs de blé et de lavande.",
+      "prix": "Prix sur demande",
+      "dimensions": "55 x 38 cm",
+      "technique": "Huile sur toile de lin. Couteau.",
+      "annee": "—",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/005.jpg",
+      "disponible": true
+    },
+    {
       "id": "010",
       "titre": "Les dernières nouvelles",
       "artiste": "CH Jaillard",
