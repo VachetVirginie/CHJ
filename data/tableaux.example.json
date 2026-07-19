@@ -164,18 +164,6 @@
     },
     {
       "id": "014",
-      "titre": "Le Printemps",
-      "artiste": "CH Jaillard",
-      "description": "Le style impressionniste, caractérisé par des touches de peinture vibrantes et texturées, restitue bien la beauté sauvage et la sérénité de cette nature montagneuse.",
-      "prix": "Prix sur demande",
-      "dimensions": "80 x 65 cm",
-      "technique": "Huile sur toile de lin. Technique mixte.",
-      "annee": "—",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/014.jpg",
-      "disponible": false
-    },
-    {
-      "id": "015",
       "titre": "Arbres fruitiers en Provence",
       "artiste": "CH Jaillard",
       "description": "Description à compléter.",
