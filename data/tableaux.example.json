@@ -197,6 +197,18 @@
       "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/016.jpg",
       "disponible": false
+    },
+    {
+      "id": "017",
+      "titre": "le massif du Vercors",
+      "artiste": "CH Jaillard",
+      "description": "Le style impressionniste, caractérisé par des touches de peinture vibrantes et texturées, restitue bien la beauté sauvage et la sérénité de cette nature montagneuse.",
+      "prix": "930€",
+      "dimensions": "",
+      "technique": "Huile sur toile de lin. Technique mixte",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/018.jpg",
+      "disponible": true
     }
   ]
 }
