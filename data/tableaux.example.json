@@ -235,15 +235,15 @@
       "disponible": false
     },
     {
-      "id": "029",
-      "titre": "Forêt Rouge",
-      "artiste": "",
-      "description": "",
-      "prix": "",
-      "dimensions": "",
-      "technique": "",
+      "id": "020",
+      "titre": "Quartier ST Paul à Lyon",
+      "artiste": "CH Jaillard",
+      "description": "Une rue du Vieux Lyon longeant les quais de Saône, caractérisée par de hauts immeubles aux façades ocre typiques du quartier.",
+      "prix": "530€",
+      "dimensions": "60 x 50 cm",
+      "technique": "Huile sur toile de lin",
       "annee": "",
-      "image": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/020.jpg",
       "disponible": false
     }
   ]
