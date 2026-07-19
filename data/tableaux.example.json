@@ -221,6 +221,30 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/020.jpg",
       "disponible": true
+    },
+    {
+      "id": "019",
+      "titre": "Eglise de St Tropez",
+      "artiste": "",
+      "description": "",
+      "prix": "",
+      "dimensions": "",
+      "technique": "",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/019.jpg",
+      "disponible": false
+    },
+    {
+      "id": "029",
+      "titre": "Forêt Rouge",
+      "artiste": "",
+      "description": "",
+      "prix": "",
+      "dimensions": "",
+      "technique": "",
+      "annee": "",
+      "image": "",
+      "disponible": false
     }
   ]
 }
