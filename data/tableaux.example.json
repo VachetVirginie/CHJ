@@ -163,19 +163,19 @@
       "disponible": false
     },
     {
-      "id": "016",
-      "titre": "Massif du Vercors",
+      "id": "014",
+      "titre": "Le Printemps",
       "artiste": "CH Jaillard",
       "description": "Le style impressionniste, caractérisé par des touches de peinture vibrantes et texturées, restitue bien la beauté sauvage et la sérénité de cette nature montagneuse.",
       "prix": "Prix sur demande",
       "dimensions": "80 x 65 cm",
       "technique": "Huile sur toile de lin. Technique mixte.",
       "annee": "—",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/016.jpg",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/014.jpg",
       "disponible": false
     },
     {
-      "id": "017",
+      "id": "015",
       "titre": "Arbres fruitiers en Provence",
       "artiste": "CH Jaillard",
       "description": "Description à compléter.",
@@ -185,18 +185,6 @@
       "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/017.jpg",
       "disponible": false
-    },
-    {
-      "id": "014",
-      "titre": "Le Printemps",
-      "artiste": "CH Jaillard",
-      "description": "Ce tableau semi-abstrait représente pour moi le Printemps. On peut imaginer un amandier ou un cerisier en fleur qui se détache sur un ciel bleu lumineux. On pourrait y voir aussi des oiseaux voletant dans l'arbre.\nLe mouvement des coups de pinceau donne une impression de fraîcheur et de vent matinal, capturant l'énergie vibrante de la nature en plein éveil.",
-      "prix": "930€",
-      "dimensions": "80 cm x 65 cm",
-      "technique": "Huile sur toile de lin. Mixte",
-      "annee": "—",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/019.jpg",
-      "disponible": true
     },
     {
       "id": "21",
