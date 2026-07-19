@@ -209,6 +209,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/019.jpg",
       "disponible": true
+    },
+    {
+      "id": "018",
+      "titre": "Vue sur la cote d'Opale",
+      "artiste": "CH Jaillard",
+      "description": "",
+      "prix": "",
+      "dimensions": "80 cm x 65 cm",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/20.jpg",
+      "disponible": false
     }
   ]
 }
