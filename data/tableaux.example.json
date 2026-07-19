@@ -123,7 +123,7 @@
       "dimensions": "55 x 46  cm",
       "technique": "Huile sur toile de lin. Couteau.",
       "annee": "—",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/012.jpg",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/010.jpg",
       "disponible": true
     },
     {
@@ -147,7 +147,7 @@
       "dimensions": "40 x 40 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/014.jpg",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/012.jpg",
       "disponible": false
     },
     {
@@ -191,7 +191,7 @@
       "titre": "Vue sur la cote d'Opale",
       "artiste": "CH Jaillard",
       "description": "Description à compléter.",
-      "prix": "",
+      "prix": "Prix sur demande",
       "dimensions": "80 cm x 65 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
@@ -204,9 +204,9 @@
       "artiste": "CH Jaillard",
       "description": "Le style impressionniste, caractérisé par des touches de peinture vibrantes et texturées, restitue bien la beauté sauvage et la sérénité de cette nature montagneuse.",
       "prix": "930€",
-      "dimensions": "",
+      "dimensions": "—",
       "technique": "Huile sur toile de lin. Technique mixte",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/018.jpg",
       "disponible": true
     },
@@ -218,7 +218,7 @@
       "prix": "930€",
       "dimensions": "80 cm x 65 cm",
       "technique": "Huile sur toile de lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/020.jpg",
       "disponible": true
     },
@@ -226,11 +226,11 @@
       "id": "019",
       "titre": "Eglise de St Tropez",
       "artiste": "CH Jaillard",
-      "description": "",
-      "prix": "",
+      "description": "Description à compléter.",
+      "prix": "Prix sur demande",
       "dimensions": "46 x 34 cm",
       "technique": "Huile sur toile de lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/019.jpg",
       "disponible": false
     },
@@ -242,7 +242,7 @@
       "prix": "530€",
       "dimensions": "60 x 50 cm",
       "technique": "Huile sur toile de lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/020.jpg",
       "disponible": true
     }
