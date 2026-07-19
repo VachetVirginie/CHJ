@@ -55,7 +55,7 @@
       "disponible": false
     },
     {
-      "id": "007",
+      "id": "005",
       "titre": "Pause café",
       "artiste": "CH Jaillard",
       "description": "Ce tableau peint à l'huile représente une scène de café conviviale, où un homme au chapeau blanc et une femme installée de profil partagent un moment autour d'une table. À l'arrière-plan, un serveur vêtu d'une chemise rose vif s'approche en portant un plateau chargé de verres et de tasses. L'ensemble de la scène se détache sur un fond bleu intense, capturé avec une touche picturale texturée et dynamique.",
@@ -88,18 +88,6 @@
       "technique": "Huile sur toile de lin. Technique mixte.",
       "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/009.jpg",
-      "disponible": true
-    },
-    {
-      "id": "005",
-      "titre": "Sans titre",
-      "artiste": "Artiste",
-      "description": "Champs de blé et de lavande.",
-      "prix": "Prix sur demande",
-      "dimensions": "55 x 38 cm",
-      "technique": "Huile sur toile de lin. Couteau.",
-      "annee": "—",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/005.jpg",
       "disponible": true
     },
     {
