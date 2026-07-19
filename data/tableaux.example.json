@@ -161,6 +161,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/011.jpg",
       "disponible": false
+    },
+    {
+      "id": "014",
+      "titre": "Un café en Bretagne",
+      "artiste": "CH Jaillard",
+      "description": "",
+      "prix": "",
+      "dimensions": "40 x 40 cm",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/014.jpg",
+      "disponible": false
     }
   ]
 }
