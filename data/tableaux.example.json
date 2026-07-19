@@ -257,6 +257,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/021.jpg",
       "disponible": true
+    },
+    {
+      "id": "022",
+      "titre": "Café Sévigné",
+      "artiste": "CH Jaillard",
+      "description": "Café Sévigné sur la place principale de Grignan dans la Drôme.",
+      "prix": "",
+      "dimensions": "80 cm x 65 cm",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/022.jpg",
+      "disponible": false
     }
   ]
 }
