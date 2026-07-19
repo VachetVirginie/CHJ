@@ -139,6 +139,18 @@
       "disponible": true
     },
     {
+      "id": "013",
+      "titre": "Marché de Villefranche-sur-Mer",
+      "artiste": "CH Jaillard",
+      "description": "Promenade le long des étales colorés sous un soleil lumineux de Villefranche-sur-Mer.",
+      "prix": "480€",
+      "dimensions": "60 x 45 cm",
+      "technique": "Huile sur toile de lin.",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/013.jpg",
+      "disponible": true
+    },
+    {
       "id": "011",
       "titre": "Pont ferroviaire lyonnais",
       "artiste": "CH Jaillard",
