@@ -127,7 +127,7 @@
       "disponible": true
     },
     {
-      "id": "013",
+      "id": "011",
       "titre": "Marché de Villefranche-sur-Mer",
       "artiste": "CH Jaillard",
       "description": "Promenade le long des étales colorés sous un soleil lumineux de Villefranche-sur-Mer.",
@@ -137,18 +137,6 @@
       "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/013.jpg",
       "disponible": true
-    },
-    {
-      "id": "011",
-      "titre": "Pont ferroviaire lyonnais",
-      "artiste": "CH Jaillard",
-      "description": "Pont ferroviaire lyonnais situé à coté du pont Kitchener à Lyon.",
-      "prix": "Prix sur demande",
-      "dimensions": "50 x 50 cm",
-      "technique": "—",
-      "annee": "—",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/011.jpg",
-      "disponible": false
     },
     {
       "id": "014",
