@@ -111,7 +111,7 @@
       "dimensions": "30 x30 cm",
       "technique": "Huile sur toile de lin.",
       "annee": "—",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/010.jpg",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/009.jpg",
       "disponible": true
     },
     {
@@ -254,7 +254,7 @@
       "prix": "450 €",
       "dimensions": "50 x 50 cm",
       "technique": "Huile sur toile de lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/021.jpg",
       "disponible": true
     },
@@ -263,10 +263,10 @@
       "titre": "Café Sévigné",
       "artiste": "CH Jaillard",
       "description": "Café Sévigné sur la place principale de Grignan dans la Drôme.",
-      "prix": "",
+      "prix": "Prix sur demande",
       "dimensions": "80 cm x 65 cm",
       "technique": "Huile sur toile de lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/022.jpg",
       "disponible": false
     }
