@@ -269,6 +269,18 @@
       "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/018.jpg",
       "disponible": false
+    },
+    {
+      "id": "023",
+      "titre": "Une journée à la plage",
+      "artiste": "CH Jaillard",
+      "description": "Un moment de convivialité estival sur la plage de Cavalière au Lavandou, abrité sous l'ombre protectrice d'un pin parasol.",
+      "prix": "450 €",
+      "dimensions": "50 x 50 cm",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/023.jpg",
+      "disponible": true
     }
   ]
 }
