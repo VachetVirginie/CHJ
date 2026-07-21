@@ -413,6 +413,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/034.jpg",
       "disponible": true
+    },
+    {
+      "id": "035",
+      "titre": "Vue de notre cuisine",
+      "artiste": "CH Jaillard",
+      "description": "",
+      "prix": "300€ encadré",
+      "dimensions": "40 x 40",
+      "technique": "",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/035.jpg",
+      "disponible": true
     }
   ]
 }
