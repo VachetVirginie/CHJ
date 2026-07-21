@@ -389,6 +389,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/032.jpg",
       "disponible": true
+    },
+    {
+      "id": "033",
+      "titre": "Centre du Lavandou",
+      "artiste": "CH Jaillard",
+      "description": "Vue sur l'hôtel  L'Ilôt Fleuri",
+      "prix": "300€ encadré",
+      "dimensions": "40 x 40",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/033.jpg",
+      "disponible": true
     }
   ]
 }
