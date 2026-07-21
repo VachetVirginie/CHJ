@@ -401,6 +401,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/033.jpg",
       "disponible": true
+    },
+    {
+      "id": "034",
+      "titre": "Les pins parasol",
+      "artiste": "CH Jaillard",
+      "description": "Les pins parasol de la résidence La Méridienne",
+      "prix": "300€ encadré",
+      "dimensions": "40 x 40",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/034.jpg",
+      "disponible": true
     }
   ]
 }
