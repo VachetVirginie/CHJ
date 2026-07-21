@@ -293,6 +293,18 @@
       "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/024.jpg",
       "disponible": true
+    },
+    {
+      "id": "025",
+      "titre": "Forêt Rouge",
+      "artiste": "CH Jaillard",
+      "description": "",
+      "prix": "",
+      "dimensions": "",
+      "technique": "",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/025.jpg",
+      "disponible": true
     }
   ]
 }
