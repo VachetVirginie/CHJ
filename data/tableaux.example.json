@@ -317,6 +317,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/026.jpg",
       "disponible": true
+    },
+    {
+      "id": "027",
+      "titre": "Vue sur la plage du Lavandou",
+      "artiste": "CH Jaillard",
+      "description": "",
+      "prix": "300€ encadré",
+      "dimensions": "40 x 40",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/027.jpg",
+      "disponible": true
     }
   ]
 }
