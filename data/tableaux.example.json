@@ -485,6 +485,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/040.jpg",
       "disponible": true
+    },
+    {
+      "id": "041",
+      "titre": "Chantier naval du Lavandou",
+      "artiste": "CH Jaillard",
+      "description": "",
+      "prix": "640",
+      "dimensions": "60 x 60 cm",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/041.jpg",
+      "disponible": true
     }
   ]
 }
