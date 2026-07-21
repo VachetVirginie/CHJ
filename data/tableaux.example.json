@@ -341,6 +341,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/028.jpg",
       "disponible": true
+    },
+    {
+      "id": "029",
+      "titre": "En allant sur la plage de St Claire",
+      "artiste": "CH Jaillard",
+      "description": "",
+      "prix": "300€ encadré",
+      "dimensions": "40 x 40",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/029.jpg",
+      "disponible": true
     }
   ]
 }
