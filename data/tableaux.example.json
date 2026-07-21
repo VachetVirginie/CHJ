@@ -437,6 +437,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/036.jpg",
       "disponible": true
+    },
+    {
+      "id": "037",
+      "titre": "Départ pour les Iles d'Or",
+      "artiste": "CH Jaillard",
+      "description": "",
+      "prix": "",
+      "dimensions": "40 x 40",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/037.jpg",
+      "disponible": false
     }
   ]
 }
