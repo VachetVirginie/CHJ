@@ -449,6 +449,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/037.jpg",
       "disponible": false
+    },
+    {
+      "id": "038",
+      "titre": "Départ pour les Iles d'Or",
+      "artiste": "CH Jaillard",
+      "description": "Les voyageurs patientent avant d'embarquer sur \" le Corsaire\" qui les emmènera sur Port Cros.",
+      "prix": "530€",
+      "dimensions": "61 x 46 cm",
+      "technique": "Huile sur toile",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/038.jpg",
+      "disponible": true
     }
   ]
 }
