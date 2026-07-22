@@ -7,18 +7,6 @@
   },
   "tableaux": [
     {
-      "id": "001",
-      "titre": "Portofino",
-      "artiste": "",
-      "description": "",
-      "prix": "",
-      "dimensions": "",
-      "technique": "",
-      "annee": "",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/001.jpg",
-      "disponible": true
-    },
-    {
       "id": "002",
       "titre": "Lac du Bourget",
       "artiste": "CH Jaillard",
