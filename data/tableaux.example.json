@@ -533,6 +533,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/044.jpg",
       "disponible": true
+    },
+    {
+      "id": "045",
+      "titre": "Le port de La Ciotat",
+      "artiste": "CH Jaillard",
+      "description": "Une vue frontale et ensoleillée d'un quai du port de La Ciotat, bordé de façades provençales et de bateaux à l'amarrage.",
+      "prix": "550 €",
+      "dimensions": "61 x 50 cm",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/045.jpg",
+      "disponible": true
     }
   ]
 }
