@@ -521,6 +521,18 @@
       "annee": "",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/043.jpg",
       "disponible": true
+    },
+    {
+      "id": "044",
+      "titre": "Plage de Cavalière",
+      "artiste": "CH Jaillard",
+      "description": "La touche est résolument impressionniste, très libre et vibrante. Les personnages sur la plage ne sont pas détaillés mais suggérés par de petites touches de matière, captant parfaitement l'atmosphère estivale, la chaleur ambiante et la contemplation du paysage.",
+      "prix": "430 €",
+      "dimensions": "55 x 46 cm",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/044.jpg",
+      "disponible": true
     }
   ]
 }
