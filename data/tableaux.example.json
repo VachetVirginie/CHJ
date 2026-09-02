@@ -223,18 +223,6 @@
       "disponible": true
     },
     {
-      "id": "021",
-      "titre": "Pont ferroviaire",
-      "artiste": "CH Jaillard",
-      "description": "Pont ferroviaire Kitchener à Lyon surplombant la Saône.",
-      "prix": "450 €",
-      "dimensions": "50 x 50 cm",
-      "technique": "Huile sur toile de lin",
-      "annee": "—",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/021.jpg",
-      "disponible": true
-    },
-    {
       "id": "022",
       "titre": "Café Sévigné",
       "artiste": "CH Jaillard",
@@ -494,7 +482,7 @@
       "prix": "650€",
       "dimensions": "60 x 60cm",
       "technique": "Huile sur toile de lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/041.jpg",
       "disponible": true
     },
@@ -502,11 +490,11 @@
       "id": "042",
       "titre": "Le moniteur de voile",
       "artiste": "CH Jaillard",
-      "description": "",
+      "description": "Description à compléter.",
       "prix": "450",
       "dimensions": "50 x 50 cm",
       "technique": "Huile sur toile de lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/042.jpg",
       "disponible": true
     },
@@ -518,7 +506,7 @@
       "prix": "640 €",
       "dimensions": "60 x 60 cm",
       "technique": "Huile sur toile de lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/043.jpg",
       "disponible": true
     },
@@ -530,7 +518,7 @@
       "prix": "430 €",
       "dimensions": "55 x 46 cm",
       "technique": "Huile sur toile de lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/044.jpg",
       "disponible": true
     },
@@ -542,7 +530,7 @@
       "prix": "550 €",
       "dimensions": "61 x 50 cm",
       "technique": "Huile sur toile de lin",
-      "annee": "",
+      "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/045.jpg",
       "disponible": true
     }
