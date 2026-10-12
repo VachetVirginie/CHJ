@@ -230,7 +230,7 @@ function renderGallery() {
           <h2>Une question ?</h2>
           <div class="divider"></div>
           <p class="lead">Pour toute demande d'acquisition, de prix ou pour réserver un tableau exposé, envoyez-moi un message direct.</p>
-          <p class="contact-direct">06 29 47 08 66 · cs.jaillard@gmail.com</p>
+          <p class="contact-direct">06 29 47 08 66 · ${escapeHtml(catalogue.site.email)}</p>
         </header>
         <form class="contact-form" id="contactForm">
           <div class="contact-row">
