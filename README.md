@@ -118,7 +118,13 @@ Taille maximum :
     "nom": "Galerie Charles H Jaillard",
     "accroche": "",
     "email": "contact@example.com",
-    "whatsapp": "33600000000"
+    "whatsapp": "33600000000",
+    "categories": [
+      "Exposition au Lavandou",
+      "Paysages",
+      "Scènes de vie",
+      "Bords de mer"
+    ]
   },
   "tableaux": [
     {
@@ -130,12 +136,30 @@ Taille maximum :
       "dimensions": "60 × 80 cm",
       "technique": "Acrylique sur toile",
       "annee": "2025",
+      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/UTILISATEUR/REPO/main/images/001.jpg",
       "disponible": true
     }
   ]
 }
 ```
+
+## Catégories
+
+- Chaque tableau a au maximum une `categorie` (chaîne de texte, vide = sans catégorie).
+- `site.categories` définit l'ordre d'affichage des boutons de filtre dans la galerie.
+- Les catégories utilisées par les tableaux mais absentes de `site.categories` sont affichées automatiquement à la suite.
+- Dans `/chj/editeur`, le champ Catégorie propose les catégories existantes mais accepte aussi une nouvelle valeur saisie à la main ; elle est alors ajoutée à `site.categories` lors de la sauvegarde.
+
+## Formulaire de contact
+
+La section Contact utilise **Netlify Forms** :
+
+- Un formulaire caché `name="contact"` dans `index.html` permet à Netlify de détecter le formulaire au déploiement (le formulaire visible est rendu en JS).
+- L'envoi se fait en POST AJAX vers `/`. Les messages sont consultables dans `Site dashboard > Forms > contact`.
+- Pour recevoir un mail à chaque message : `Site configuration > Forms > Form notifications > Add notification > Email`.
+- Un champ honeypot `bot-field` filtre les soumissions spam.
+- En local ou si Netlify Forms est désactivé, le formulaire bascule automatiquement sur un mailto pré-rempli.
 
 ## Local
 

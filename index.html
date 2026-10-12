@@ -3,75 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Galerie de tableaux</title>
+  <title>Galerie Charles H Jaillard</title>
   <meta name="description" content="Galerie de tableaux avec fiches accessibles par QR code." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="/" aria-label="Accueil galerie">
-      <div class="brand-top">
-        <div class="brand-title-wrap">
-          <div class="brand-title-row">
-            <p class="brand-title"><span class="brand-galerie">Galerie</span> <span class="brand-name">Charles H Jaillard</span></p>
-            <button type="button" class="bio-trigger" aria-label="Biographie">
-              <img src="images/IconeBio.png" alt="" aria-hidden="true" />
-            </button>
-          </div>
-          <div class="brand-contact-wrap">
-            <p class="brand-contact">Contact : 06 29 47 08 66</p>
-            <p class="brand-contact">cs.jaillard@gmail.com</p>
-          </div>
-          <div class="brand-line"></div>
-        </div>
-        <img class="brand-sun" src="images/Soleil.png" alt="" aria-hidden="true" />
+    <div class="header-inner">
+      <a class="brand" href="/" data-link aria-label="Accueil galerie">
+        <span class="brand-name">Charles H Jaillard</span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a class="nav-link" href="/" data-link>Accueil</a>
+        <a class="nav-link" href="/#gallerySection" data-link>Galerie</a>
+        <a class="nav-link" href="/#artiste" data-link>L'Artiste</a>
+        <a class="nav-link" href="/#contact" data-link>Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a class="button nav-cta" href="/#gallerySection" data-link>D&eacute;couvrir les &oelig;uvres</a>
+        <button type="button" id="mobile-menu-btn" aria-label="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
       </div>
-    </a>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <a class="mobile-link" href="/" data-link>Accueil</a>
+      <a class="mobile-link" href="/#gallerySection" data-link>Galerie</a>
+      <a class="mobile-link" href="/#artiste" data-link>L'Artiste</a>
+      <a class="mobile-link" href="/#contact" data-link>Contact</a>
+    </div>
   </header>
 
   <main id="app" class="app" aria-live="polite"></main>
 
   <footer class="site-footer">
-    <p></p>
+    <div class="footer-inner">
+      <p class="footer-brand">Galerie <span>.</span> Charles H Jaillard</p>
+      <p class="footer-sub">Atelier d'art impressionniste &middot; Le Lavandou, France</p>
+      <p class="footer-copy">&copy; 2026 Galerie Charles H Jaillard. Tous droits r&eacute;serv&eacute;s.</p>
+    </div>
   </footer>
 
-  <div class="bio-modal" id="bioModal" role="dialog" aria-modal="true" aria-labelledby="bioTitle" hidden>
-    <div class="bio-modal-backdrop" data-close-modal></div>
-    <div class="bio-modal-panel">
-      <button type="button" class="bio-modal-close" aria-label="Fermer" data-close-modal>&times;</button>
-      <div class="bio-modal-layout">
-        <div class="bio-modal-image">
-          <img src="images/ch.jpg" alt="Charles H Jaillard" />
-        </div>
-        <div class="bio-modal-body">
-          <h2 id="bioTitle">Faisons connaissance !</h2>
-          <svg class="bio-modal-sun" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="50" cy="50" r="14" stroke="#ffffff" stroke-width="2" fill="none"/>
-            <line x1="50" y1="4" x2="50" y2="26" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
-            <line x1="50" y1="74" x2="50" y2="96" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
-            <line x1="4" y1="50" x2="26" y2="50" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
-            <line x1="74" y1="50" x2="96" y2="50" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
-            <line x1="20" y1="20" x2="31" y2="31" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="69" y1="69" x2="80" y2="80" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="80" y1="20" x2="69" y2="31" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="20" y1="80" x2="31" y2="69" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-          <div class="bio-modal-content">
-            <p>Pour faire court, voici mon top 5 des révélations essentielles sur moi !</p>
-            <ol>
-              <li><strong>Coloriste de profession :</strong> mon métier de graphiste-illustrateur m'a amené à passer la première partie de ma vie à harmoniser les couleurs et à chercher le cadrage parfait pour des commandes. Aujourd'hui, j'apprécie de pouvoir peindre ce qui me plait en mettant à profit mon expérience passée. C'est du pur plaisir !</li>
-              <li><strong>Tourné vers le soleil :</strong> on peut dire que mes toiles sont plutôt vibrantes et colorées. Je cherche avant tout à capter la lumière et la douceur du Sud dans mes toiles. Tristounet, je ne sais pas faire.</li>
-              <li><strong>Impressionniste, mais version moderne :</strong> je tente de capter l'atmosphère façon impressionniste, en y ajoutant des touches de spontanéité avec une approche résolument moderne et graphique.</li>
-              <li><strong>Collectionneur de détails :</strong> j'aime beaucoup observer les effets de lumière, les reflets et à imaginer comment les peindre. Mon travail commence souvent sur le terrain : je pars en "reportage photo" pour rapporter des sensations visuelles, des atmosphères et des détails éphémères, une silhouette fugace que je ne pourrai pas observer en peignant sur le motif. Cela m'aide à nourrir ma mémoire visuelle avant de transposer ces éléments sur la toile.</li>
-              <li><strong>Un brin contemplatif ! :</strong> mon processus créatif est plutôt laborieux ! J'ai besoin de me mettre en condition et le déclic doit se faire pour que je puisse sortir mes couleurs à l'huile ... C'est une démarche artistique hautement intellectuelle et cérébrale (!)... même si mon épouse appelle plutôt ça "regarder les mouches voler".</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </div>
+  <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="nom" />
+    <input type="email" name="email" />
+    <input type="text" name="sujet" />
+    <textarea name="message"></textarea>
+  </form>
+
+  <div id="toast" class="toast" role="status" hidden>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+    <span id="toast-message">Votre message a été transmis à l'artiste.</span>
   </div>
 
   <script src="/app.js" defer></script>

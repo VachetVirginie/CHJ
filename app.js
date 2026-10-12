@@ -22,43 +22,21 @@ async function init() {
   } catch (error) {
     renderError("Impossible de charger le catalogue.", "Vérifie l'URL du fichier JSON et sa disponibilité publique.");
   }
-  initBioModal();
+  initMobileMenu();
 }
 
-function initBioModal() {
-  const trigger = document.querySelector(".bio-trigger");
-  const modal = document.getElementById("bioModal");
-  if (!trigger || !modal) return;
+function initMobileMenu() {
+  const button = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  if (!button || !menu) return;
 
-  const closeButtons = modal.querySelectorAll("[data-close-modal]");
-
-  function openModal() {
-    modal.hidden = false;
-    document.body.style.overflow = "hidden";
-    closeButtons[0]?.focus();
-  }
-
-  function closeModal() {
-    modal.hidden = true;
-    document.body.style.overflow = "";
-    trigger.focus();
-  }
-
-  trigger.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    openModal();
+  button.addEventListener("click", () => {
+    menu.hidden = !menu.hidden;
   });
-  closeButtons.forEach((button) => button.addEventListener("click", closeModal));
-  modal.addEventListener("click", (event) => {
-    if (event.target.classList.contains("bio-modal-backdrop")) {
-      closeModal();
-    }
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !modal.hidden) {
-      closeModal();
-    }
+  menu.querySelectorAll(".mobile-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.hidden = true;
+    });
   });
 }
 
@@ -78,7 +56,10 @@ function normalizeCatalogue(data) {
       nom: site.nom || "Galerie Charles H Jaillard",
       accroche: site.accroche || "Œuvres originales et fiches accessibles par QR code.",
       email: site.email || "contact@example.com",
-      whatsapp: String(site.whatsapp || "").replace(/\D+/g, "")
+      whatsapp: String(site.whatsapp || "").replace(/\D+/g, ""),
+      categories: Array.isArray(site.categories)
+        ? site.categories.filter((c) => typeof c === "string" && c.trim())
+        : []
     },
     tableaux: tableaux.map((item) => ({
       id: slugify(item.id || item.titre),
@@ -89,6 +70,7 @@ function normalizeCatalogue(data) {
       dimensions: item.dimensions || "—",
       technique: item.technique || "—",
       annee: item.annee || "—",
+      categorie: item.categorie || "",
       image: item.image || "",
       disponible: item.disponible !== false
     })).filter((item) => item.id)
@@ -97,10 +79,8 @@ function normalizeCatalogue(data) {
 
 function updateSiteChrome(site) {
   document.title = site.nom;
-  const brand = document.querySelector(".brand span:last-child");
-  const footer = document.querySelector(".site-footer p");
+  const brand = document.querySelector(".brand .brand-name");
   if (brand) brand.textContent = site.nom;
-  if (footer) footer.textContent = "";
 }
 
 function renderRoute() {
@@ -138,28 +118,225 @@ function renderAdminHub() {
   `;
 }
 
+function catalogueCategories(tableaux) {
+  return (catalogue.site.categories || [])
+    .concat(tableaux.map((item) => item.categorie))
+    .filter((category, index, all) => category && all.indexOf(category) === index);
+}
+
 function renderGallery() {
   const items = catalogue.tableaux.filter((item) => item.titre && item.image);
-  app.innerHTML = `
+  const categories = catalogueCategories(items);
+  const featured = items.find((item) => item.disponible) || items[0];
 
-    <section class="grid" id="galleryGrid">
-      ${items.map(cardHtml).join("")}
+  app.innerHTML = `
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <svg class="hero-sun" viewBox="0 0 100 100" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="Soleil">
+            <path d="M 50 23 C 66 22, 78 34, 77 50 C 76 66, 63 78, 47 77 C 32 76, 22 63, 23 47 C 24 33, 37 23, 52 24 C 60 25, 68 29, 71 36" fill="#FBBF24" stroke-width="4" stroke-linecap="round"/>
+            <path d="M 50 5 L 49 15 M 79 16 L 71 24 M 95 49 L 84 50 M 80 81 L 72 73 M 48 95 L 49 84 M 20 81 L 28 73 M 5 50 L 16 49 M 18 19 L 26 27" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <p class="eyebrow">Peinture impressionniste contemporaine</p>
+          <h1>La lumière et la couleur en <em>mouvement</em>.</h1>
+          <p class="hero-lead">Bienvenue dans ma galerie en ligne. Explorez une collection de tableaux façonnés à l'huile, vibrant sous l'intensité des pigments purs, de la lumière du Sud et de la matière vive.</p>
+          <a class="button" href="#gallerySection">Découvrir les œuvres</a>
+        </div>
+        ${featured ? `
+        <a class="hero-frame" href="/tableau/${encodeURIComponent(featured.id)}" data-link aria-label="Voir ${escapeAttr(featured.titre)}">
+          <span class="hero-frame-media">${imageHtml(featured, "hero-frame-img")}</span>
+          <span class="hero-frame-caption">
+            <span class="hero-frame-eyebrow">Œuvre phare</span>
+            <span class="hero-frame-title">${escapeHtml(featured.titre)}</span>
+            <span class="hero-frame-specs">${escapeHtml(featured.technique)} · ${escapeHtml(featured.dimensions)}</span>
+          </span>
+        </a>` : ""}
+      </div>
+    </section>
+    <section class="gallery-section" id="gallerySection">
+      <header class="section-head">
+        <p class="eyebrow">Exposition permanente</p>
+        <h2>Galerie des œuvres</h2>
+        <div class="divider"></div>
+        <div class="category-filters" id="categoryFilters">
+          <button type="button" class="cat-btn is-active" data-category="">Toutes les œuvres</button>
+          ${categories.map((category) => `<button type="button" class="cat-btn" data-category="${escapeAttr(category)}">${escapeHtml(category)}</button>`).join("")}
+        </div>
+      </header>
+      <div class="toolbar">
+        <div class="toolbar-search">
+          <input type="search" id="searchInput" class="input toolbar-input" placeholder="Rechercher un titre ou un mot-clé..." aria-label="Rechercher un tableau" />
+        </div>
+        <span class="artwork-count" id="artworkCount"></span>
+      </div>
+      <section class="grid" id="galleryGrid"></section>
+    </section>
+    <section class="artiste-section" id="artiste">
+      <div class="artiste-inner">
+        <div class="artiste-portrait">
+          <div class="artiste-frame">
+            <img src="images/ch.jpg" alt="Charles H Jaillard" loading="lazy" />
+          </div>
+        </div>
+        <div class="artiste-body">
+          <p class="eyebrow">À propos de l'artiste</p>
+          <h2>Faisons connaissance !</h2>
+          <div class="divider divider-left"></div>
+          <p class="artiste-lead">Voici le top 5 des révélations essentielles pour comprendre mon univers et ma démarche artistique.</p>
+          <div class="bio-list">
+            <div class="bio-item">
+              <span class="bio-num">01</span>
+              <div>
+                <h3>Coloriste de profession</h3>
+                <p>Mon métier de graphiste-illustrateur m'a amené à passer la première partie de ma vie à harmoniser les couleurs et à chercher le cadrage parfait pour des commandes. Aujourd'hui, j'apprécie de pouvoir peindre ce qui me plait en mettant à profit mon expérience passée. C'est du pur plaisir !</p>
+              </div>
+            </div>
+            <div class="bio-item">
+              <span class="bio-num">02</span>
+              <div>
+                <h3>Tourné vers le soleil</h3>
+                <p>On peut dire que mes toiles sont plutôt vibrantes et colorées. Je cherche avant tout à capter la lumière et la douceur du Sud dans mes toiles. Tristounet, je ne sais pas faire.</p>
+              </div>
+            </div>
+            <div class="bio-item">
+              <span class="bio-num">03</span>
+              <div>
+                <h3>Impressionniste, mais version moderne</h3>
+                <p>Je tente de capter l'atmosphère façon impressionniste, en y ajoutant des touches de spontanéité avec une approche résolument moderne et graphique.</p>
+              </div>
+            </div>
+            <div class="bio-item">
+              <span class="bio-num">04</span>
+              <div>
+                <h3>Collectionneur de détails</h3>
+                <p>J'aime beaucoup observer les effets de lumière, les reflets et imaginer comment les peindre. Mon travail commence souvent sur le terrain : je pars en "reportage photo" pour rapporter des sensations visuelles, des atmosphères et des détails éphémères, une silhouette fugace que je ne pourrai pas observer en peignant sur le motif. Cela m'aide à nourrir ma mémoire visuelle avant de transposer ces éléments sur la toile.</p>
+              </div>
+            </div>
+            <div class="bio-item">
+              <span class="bio-num">05</span>
+              <div>
+                <h3>Un brin contemplatif !</h3>
+                <p>Mon processus créatif est plutôt laborieux ! J'ai besoin de me mettre en condition et le déclic doit se faire pour que je puisse sortir mes couleurs à l'huile ... C'est une démarche artistique hautement intellectuelle et cérébrale (!)... même si mon épouse appelle plutôt ça "regarder les mouches voler".</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="contact-section" id="contact">
+      <div class="contact-inner">
+        <header class="section-head">
+          <p class="eyebrow">Contact &amp; acquisition</p>
+          <h2>Une question ?</h2>
+          <div class="divider"></div>
+          <p class="lead">Pour toute demande d'acquisition, de prix ou pour réserver un tableau exposé, envoyez-moi un message direct.</p>
+          <p class="contact-direct">06 29 47 08 66 · cs.jaillard@gmail.com</p>
+        </header>
+        <form class="contact-form" id="contactForm">
+          <div class="contact-row">
+            <label>Votre nom *<input class="field" name="nom" type="text" required /></label>
+            <label>Votre email *<input class="field" name="email" type="email" required /></label>
+          </div>
+          <label>Sujet / œuvre concernée<input class="field" name="sujet" type="text" /></label>
+          <label>Votre message *<textarea class="field textarea" name="message" rows="5" required></textarea></label>
+          <p hidden><label>Ne pas remplir<input name="bot-field" /></label></p>
+          <div class="contact-submit">
+            <button type="submit" class="button primary">Envoyer le message</button>
+          </div>
+        </form>
+      </div>
     </section>
   `;
+
+  const grid = document.getElementById("galleryGrid");
+  const count = document.getElementById("artworkCount");
+  const searchInput = document.getElementById("searchInput");
+  let activeCategory = "";
+
+  const renderItems = (list) => {
+    grid.innerHTML = list.length
+      ? list.map(cardHtml).join("")
+      : `<div class="grid-empty">Aucun tableau ne correspond à votre recherche dans cette catégorie.</div>`;
+    count.textContent = `${list.length} œuvre${list.length > 1 ? "s" : ""}`;
+  };
+
+  const applyFilters = () => {
+    const query = searchInput.value.toLowerCase().trim();
+    renderItems(items.filter((item) =>
+      (!activeCategory || item.categorie === activeCategory) &&
+      (!query ||
+        item.titre.toLowerCase().includes(query) ||
+        item.description.toLowerCase().includes(query) ||
+        item.technique.toLowerCase().includes(query))
+    ));
+  };
+
+  renderItems(items);
+
+  document.getElementById("categoryFilters").addEventListener("click", (event) => {
+    const button = event.target.closest(".cat-btn");
+    if (!button) return;
+    activeCategory = button.dataset.category;
+    document.querySelectorAll(".cat-btn").forEach((btn) => {
+      btn.classList.toggle("is-active", btn === button);
+    });
+    applyFilters();
+  });
+
+  searchInput.addEventListener("input", applyFilters);
+
+  const contactForm = document.getElementById("contactForm");
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const data = new FormData(contactForm);
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ "form-name": "contact", ...Object.fromEntries(data) }).toString()
+      });
+      if (!response.ok) throw new Error("Envoi impossible");
+      contactForm.reset();
+      showToast("Votre message a été transmis à l'artiste.");
+    } catch {
+      const subject = String(data.get("sujet") || "").trim() || `Contact galerie - ${data.get("nom")}`;
+      const body = `Nom : ${data.get("nom")}\nEmail : ${data.get("email")}\n\n${data.get("message")}`;
+      window.location.href = `mailto:${encodeURIComponent(catalogue.site.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      showToast("Votre messagerie s'ouvre pour transmettre le message à l'artiste.");
+    }
+  });
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+  toast.querySelector("#toast-message").textContent = message;
+  toast.hidden = false;
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => {
+    toast.hidden = true;
+  }, 4000);
 }
 
 function cardHtml(item) {
+  const badge = item.disponible
+    ? `<span class="badge badge-available">Disponible</span>`
+    : `<span class="badge badge-sold">Vendu</span>`;
   return `
     <article class="card">
-      <a href="/tableau/${encodeURIComponent(item.id)}" data-link aria-label="Voir ${escapeHtml(item.titre)}">
+      <a class="card-media" href="/tableau/${encodeURIComponent(item.id)}" data-link aria-label="Voir ${escapeAttr(item.titre)}">
         ${imageHtml(item, "card-image")}
+        <span class="card-badge">${badge}</span>
+        <span class="card-overlay"><span class="card-overlay-label">Agrandir / Détails</span></span>
       </a>
       <div class="card-body">
+        <p class="card-eyebrow">${escapeHtml(item.categorie || item.technique)}</p>
         <h3>${escapeHtml(item.titre)}</h3>
-        <p class="specs">${escapeHtml(item.technique)}</p>
-        <p class="specs">Format de la toile : ${escapeHtml(item.dimensions)}</p>
-        <p class="price">Prix : ${escapeHtml(item.prix)}</p>
-        <p class="status${item.disponible ? "" : " sold"}">${item.disponible ? "Disponible" : "Vendu"}</p>
+        <p class="specs">${escapeHtml(item.dimensions)} · ${escapeHtml(item.annee)}</p>
+        <div class="card-foot">
+          <span class="price${item.disponible ? "" : " price-sold"}">${escapeHtml(item.prix)}</span>
+          <span class="card-cta">Voir l'œuvre →</span>
+        </div>
       </div>
     </article>
   `;
@@ -180,21 +357,25 @@ function renderDetail(id) {
 
   app.innerHTML = `
     <section class="detail">
-      <div>
+      <div class="detail-media">
         ${imageHtml(item, "detail-image")}
       </div>
       <article class="detail-panel">
         <p class="eyebrow">Fiche tableau</p>
         <h2>${escapeHtml(item.titre)}</h2>
+        <div class="divider divider-left"></div>
         <p class="description">${escapeHtml(item.description)}</p>
-        <div class="price">${escapeHtml(item.prix)}</div>
-        <span class="status${item.disponible ? "" : " sold"}">${item.disponible ? "Disponible" : "Vendu"}</span>
         <div class="spec-list">
-          <div class="spec"><span>Dimensions</span><strong>${escapeHtml(item.dimensions)}</strong></div>
+          ${item.categorie ? `<div class="spec"><span>Catégorie</span><strong>${escapeHtml(item.categorie)}</strong></div>` : ""}
           <div class="spec"><span>Technique</span><strong>${escapeHtml(item.technique)}</strong></div>
+          <div class="spec"><span>Dimensions</span><strong>${escapeHtml(item.dimensions)}</strong></div>
           <div class="spec"><span>Année</span><strong>${escapeHtml(item.annee)}</strong></div>
+          <div class="spec"><span>Prix</span><strong class="price-value">${escapeHtml(item.prix)}</strong></div>
+          <div class="spec"><span>Statut</span><strong class="status${item.disponible ? "" : " sold"}">${item.disponible ? "Disponible à l'acquisition" : "Collection particulière / Vendu"}</strong></div>
         </div>
         <div class="actions">
+          <a class="button primary" href="${escapeAttr(mailLink)}">Demande d'information</a>
+          ${whatsappLink ? `<a class="button" href="${escapeAttr(whatsappLink)}" target="_blank" rel="noopener">WhatsApp</a>` : ""}
           <a class="button" href="/" data-link>Retour galerie</a>
         </div>
       </article>
@@ -244,6 +425,9 @@ function renderAdminEditor() {
       <h2>Éditeur du catalogue</h2>
       <p class="description">Modifie les tableaux puis enregistre. La sauvegarde pousse le JSON dans GitHub via une fonction Netlify sécurisée.</p>
       <form class="admin-form" id="adminForm">
+        <datalist id="categoriesList">
+          ${catalogueCategories(catalogue.tableaux).map((category) => `<option value="${escapeAttr(category)}"></option>`).join("")}
+        </datalist>
         <div class="form-grid">
           <label>Nom de la galerie<input class="field" name="siteNom" value="${escapeAttr(catalogue.site.nom)}" /></label>
           <label>Email<input class="field" name="siteEmail" value="${escapeAttr(catalogue.site.email)}" /></label>
@@ -297,6 +481,7 @@ function editorItemHtml(item = {}) {
             <label>Dimensions<input class="field" name="dimensions" value="${escapeAttr(item.dimensions || "")}" /></label>
             <label>Technique<input class="field" name="technique" value="${escapeAttr(item.technique || "")}" /></label>
             <label>Année<input class="field" name="annee" value="${escapeAttr(item.annee || "")}" /></label>
+            <label>Catégorie<input class="field" name="categorie" list="categoriesList" value="${escapeAttr(item.categorie || "")}" placeholder="Ex. Paysages" /></label>
             <label>Disponible<select class="field" name="disponible"><option value="true"${item.disponible !== false ? " selected" : ""}>Oui</option><option value="false"${item.disponible === false ? " selected" : ""}>Non</option></select></label>
           </div>
           <label>Description<textarea class="field textarea" name="description">${escapeHtml(item.description || "")}</textarea></label>
@@ -351,6 +536,7 @@ function onDisponibleChange(event) {
     dimensions: values.dimensions,
     technique: values.technique,
     annee: values.annee,
+    categorie: values.categorie,
     image: values.image,
     disponible: false
   };
@@ -477,10 +663,17 @@ function collectAdminCatalogue(form) {
       dimensions: values.dimensions,
       technique: values.technique,
       annee: values.annee,
+      categorie: values.categorie,
       image: values.image,
       disponible: values.disponible !== "false"
     };
   }).filter((item) => item.id);
+
+  const usedCategories = tableaux.map((item) => item.categorie).filter(Boolean);
+  const categories = (catalogue.site.categories || [])
+    .filter((category) => usedCategories.includes(category))
+    .concat(usedCategories)
+    .filter((category, index, all) => all.indexOf(category) === index);
 
   return {
     password: String(data.get("password") || ""),
@@ -489,7 +682,8 @@ function collectAdminCatalogue(form) {
         nom: String(data.get("siteNom") || "").trim(),
         accroche: "",
         email: String(data.get("siteEmail") || "").trim(),
-        whatsapp: String(data.get("siteWhatsapp") || "").trim()
+        whatsapp: String(data.get("siteWhatsapp") || "").trim(),
+        categories
       },
       tableaux
     }
@@ -524,9 +718,14 @@ function onNavigate(event) {
   const url = new URL(link.href);
   if (url.origin !== window.location.origin) return;
   event.preventDefault();
-  window.history.pushState({}, "", url.pathname);
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.history.pushState({}, "", url.pathname + url.hash);
   renderRoute();
+  if (url.hash) {
+    const target = document.querySelector(url.hash);
+    if (target) target.scrollIntoView({ behavior: "smooth" });
+    return;
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function absoluteUrl(path) {
