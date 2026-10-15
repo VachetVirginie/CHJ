@@ -545,6 +545,18 @@
       "annee": "—",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/021.jpg",
       "disponible": false
+    },
+    {
+      "id": "046",
+      "titre": "Le marché de Villefranche sur Mer",
+      "artiste": "CH Jaillard",
+      "description": "",
+      "prix": "",
+      "dimensions": "60 x 45 cm",
+      "technique": "Huile sur toile",
+      "annee": "2024",
+      "image": "",
+      "disponible": false
     }
   ]
 }
