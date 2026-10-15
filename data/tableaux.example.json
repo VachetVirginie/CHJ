@@ -3,13 +3,7 @@
     "nom": "Charles H Jaillard",
     "accroche": "",
     "email": "cs.jaillard@gmail.com",
-    "whatsapp": "33600000000",
-    "categories": [
-      "Exposition au Lavandou",
-      "Paysages",
-      "Scènes de vie",
-      "Bords de mer"
-    ]
+    "whatsapp": "33600000000"
   },
   "tableaux": [
     {
@@ -21,7 +15,6 @@
       "dimensions": "60 x 50 cm",
       "technique": "Huile sur toile de lin. Couteaux et pinceaux.",
       "annee": "—",
-      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/003.jpg",
       "disponible": true
     },
@@ -34,7 +27,6 @@
       "dimensions": "40 cm x 40 cm",
       "technique": "Huile sur toile",
       "annee": "—",
-      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
       "disponible": true
     },
@@ -47,7 +39,6 @@
       "dimensions": "30 x 30 cm",
       "technique": "Huile sur lin",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/006.jpg",
       "disponible": false
     },
@@ -60,7 +51,6 @@
       "dimensions": "50cm x 50cm",
       "technique": "Huile sur toile",
       "annee": "—",
-      "categorie": "Scènes de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/004.jpg",
       "disponible": false
     },
@@ -73,7 +63,6 @@
       "dimensions": "60 x 60 cm",
       "technique": "Huile sur lin. Mixte",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/008.jpg",
       "disponible": true
     },
@@ -86,7 +75,6 @@
       "dimensions": "50 x 50 cm",
       "technique": "Huile sur toile de lin. Technique mixte.",
       "annee": "—",
-      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/007.jpg",
       "disponible": true
     },
@@ -99,7 +87,6 @@
       "dimensions": "55 x 38 cm",
       "technique": "Huile sur toile de lin. Couteau.",
       "annee": "—",
-      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/005.jpg",
       "disponible": true
     },
@@ -112,7 +99,6 @@
       "dimensions": "30 x30 cm",
       "technique": "Huile sur toile de lin.",
       "annee": "—",
-      "categorie": "Scènes de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/009.jpg",
       "disponible": true
     },
@@ -125,7 +111,6 @@
       "dimensions": "55 x 46  cm",
       "technique": "Huile sur toile de lin. Couteau.",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/42.jpg",
       "disponible": true
     },
@@ -138,7 +123,6 @@
       "dimensions": "60 x 45 cm",
       "technique": "Huile sur toile de lin.",
       "annee": "—",
-      "categorie": "Scènes de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/011.jpg",
       "disponible": true
     },
@@ -151,7 +135,6 @@
       "dimensions": "40 x 40 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Scènes de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/012.jpg",
       "disponible": false
     },
@@ -164,7 +147,6 @@
       "dimensions": "50 x 50 cm",
       "technique": "Huile sur toile de lin. Couteau",
       "annee": "—",
-      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/32.jpg",
       "disponible": false
     },
@@ -177,7 +159,6 @@
       "dimensions": "80 cm x 65 cm",
       "technique": "Huile sur toile de lin. Mixte",
       "annee": "—",
-      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/014.jpg",
       "disponible": true
     },
@@ -190,7 +171,6 @@
       "dimensions": "46 x 38 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Scènes de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/21.jpg",
       "disponible": true
     },
@@ -203,7 +183,6 @@
       "dimensions": "80 cm x 65 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/016.jpg",
       "disponible": false
     },
@@ -216,7 +195,6 @@
       "dimensions": "—",
       "technique": "Huile sur toile de lin. Technique mixte",
       "annee": "—",
-      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/017.jpg",
       "disponible": true
     },
@@ -229,7 +207,6 @@
       "dimensions": "46 x 34 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/019.jpg",
       "disponible": false
     },
@@ -242,7 +219,6 @@
       "dimensions": "60 x 50 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/020.jpg",
       "disponible": true
     },
@@ -255,7 +231,6 @@
       "dimensions": "80 cm x 65 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Scènes de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/022.jpg",
       "disponible": false
     },
@@ -268,7 +243,6 @@
       "dimensions": "80 cm x 65 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/018.jpg",
       "disponible": false
     },
@@ -281,7 +255,6 @@
       "dimensions": "50 x 50 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/023.jpg",
       "disponible": true
     },
@@ -294,7 +267,6 @@
       "dimensions": "60 x 50 cm",
       "technique": "—",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/024.jpg",
       "disponible": true
     },
@@ -307,7 +279,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/025.jpg",
       "disponible": true
     },
@@ -320,7 +291,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/026.jpg",
       "disponible": true
     },
@@ -333,7 +303,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/027.jpg",
       "disponible": true
     },
@@ -346,7 +315,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/028.jpg",
       "disponible": true
     },
@@ -359,7 +327,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/029.jpg",
       "disponible": true
     },
@@ -372,7 +339,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/030.jpg",
       "disponible": true
     },
@@ -385,7 +351,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/031.jpg",
       "disponible": true
     },
@@ -398,7 +363,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/032.jpg",
       "disponible": true
     },
@@ -411,7 +375,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/033.jpg",
       "disponible": true
     },
@@ -424,7 +387,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/034.jpg",
       "disponible": true
     },
@@ -437,7 +399,6 @@
       "dimensions": "40 x 40",
       "technique": "—",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/035.jpg",
       "disponible": true
     },
@@ -450,7 +411,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin. Couteau",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/036.jpg",
       "disponible": true
     },
@@ -463,7 +423,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/037.jpg",
       "disponible": false
     },
@@ -476,7 +435,6 @@
       "dimensions": "61 x 46 cm",
       "technique": "Huile sur toile",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/038.jpg",
       "disponible": true
     },
@@ -489,7 +447,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/039.jpg",
       "disponible": true
     },
@@ -502,7 +459,6 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/040.jpg",
       "disponible": true
     },
@@ -515,7 +471,6 @@
       "dimensions": "80 cm x 65 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Bords de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/001.jpg",
       "disponible": false
     },
@@ -528,7 +483,6 @@
       "dimensions": "60 x 60cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/041.jpg",
       "disponible": true
     },
@@ -541,7 +495,6 @@
       "dimensions": "50 x 50 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/042.jpg",
       "disponible": true
     },
@@ -554,7 +507,6 @@
       "dimensions": "60 x 60 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/043.jpg",
       "disponible": true
     },
@@ -567,7 +519,6 @@
       "dimensions": "55 x 46 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/044.jpg",
       "disponible": true
     },
@@ -580,7 +531,6 @@
       "dimensions": "61 x 50 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/045.jpg",
       "disponible": true
     },
@@ -593,7 +543,6 @@
       "dimensions": "50 x 50 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/021.jpg",
       "disponible": false
     }
