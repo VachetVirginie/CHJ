@@ -6,7 +6,8 @@
     "whatsapp": "33600000000",
     "categories": [
       "Paysages",
-      "Bord de mer"
+      "Bord de mer",
+      "Exposition au Lavandou"
     ]
   },
   "tableaux": [
@@ -305,7 +306,7 @@
       "dimensions": "40 x 40",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "",
+      "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/025.jpg",
       "disponible": true
     },
