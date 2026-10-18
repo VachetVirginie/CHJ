@@ -5,7 +5,8 @@
     "email": "cs.jaillard@gmail.com",
     "whatsapp": "33600000000",
     "categories": [
-      "Paysages"
+      "Paysages",
+      "Bord de mer"
     ]
   },
   "tableaux": [
@@ -44,7 +45,7 @@
       "dimensions": "30 x 30 cm",
       "technique": "Huile sur lin",
       "annee": "—",
-      "categorie": "",
+      "categorie": "Bord de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/006.jpg",
       "disponible": false
     },
