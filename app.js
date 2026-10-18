@@ -497,7 +497,11 @@ function editorItemHtml(item = {}) {
 
 function addEditorItem() {
   const nextId = nextAvailableId();
-  document.getElementById("paintingsEditor").insertAdjacentHTML("beforeend", editorItemHtml({ id: nextId, disponible: true }));
+  const editor = document.getElementById("paintingsEditor");
+  editor.insertAdjacentHTML("afterbegin", editorItemHtml({ id: nextId, disponible: true }));
+  const item = editor.firstElementChild;
+  item.setAttribute("data-new", "true");
+  item.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
 function nextAvailableId(excludeId = "") {
@@ -518,6 +522,11 @@ function onDisponibleChange(event) {
   if (!select || select.value !== "false") return;
   const item = select.closest(".editor-item");
   if (!item) return;
+
+  if (item.hasAttribute("data-new")) {
+    document.getElementById("adminStatus").textContent = "Tableau marqué vendu. Enregistre pour valider.";
+    return;
+  }
 
   const values = {};
   item.querySelectorAll("[name]").forEach((field) => {
@@ -633,6 +642,7 @@ async function submitCatalogue(event) {
     if (!response.ok) throw new Error(result.error || "Sauvegarde impossible");
     catalogue = normalizeCatalogue(payload.catalogue);
     status.textContent = "Catalogue sauvegardé sur GitHub.";
+    document.querySelectorAll(".editor-item[data-new]").forEach((el) => el.removeAttribute("data-new"));
   } catch (error) {
     status.textContent = error && error.message ? error.message : "Erreur inconnue.";
   } finally {

@@ -86,12 +86,16 @@ function sanitizeCatalogue(value) {
   const site = value && value.site ? value.site : {};
   const tableaux = Array.isArray(value && value.tableaux) ? value.tableaux : [];
   const seen = new Set();
+  const categories = Array.isArray(site.categories)
+    ? site.categories.map(clean).filter((c, i, all) => c && all.indexOf(c) === i)
+    : [];
   return {
     site: {
       nom: clean(site.nom),
       accroche: clean(site.accroche),
       email: clean(site.email),
-      whatsapp: clean(site.whatsapp)
+      whatsapp: clean(site.whatsapp),
+      categories
     },
     tableaux: tableaux.map((item) => {
       const id = slugify(item && item.id);
@@ -106,6 +110,7 @@ function sanitizeCatalogue(value) {
         dimensions: clean(item.dimensions),
         technique: clean(item.technique),
         annee: clean(item.annee),
+        categorie: clean(item.categorie),
         image: clean(item.image),
         disponible: item.disponible !== false
       };
