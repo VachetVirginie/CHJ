@@ -68,7 +68,7 @@
       "id": "007",
       "titre": "Perspective provençale",
       "artiste": "CH Jaillard",
-      "description": "Paysage de la Drôme provençale , du coté de Grignan.",
+      "description": "Paysage de la Drôme provençale , du coté de Grignan. Cette peinture à l'huile offre une vue panoramique et poétique sur un paysage vallonné typique du Sud de la France. Le regard embrasse une succession de champs cultivés où se mêlent les teintes violettes de la lavande et les nuances dorées des blés ou de la terre aride, sous un ciel doux et chaleureux de fin de journée. La simplification géométrique des champs confère à la toile un style moderne tout en restant profondément fidèle à l'esprit impressionniste du paysage provençal.",
       "prix": "450 €",
       "dimensions": "50 x 50 cm",
       "technique": "Huile sur toile de lin. Technique mixte.",
@@ -582,32 +582,6 @@
       "annee": "—",
       "categorie": "Exposition au Lavandou",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/025.jpg",
-      "disponible": false
-    },
-    {
-      "id": "046",
-      "titre": "Forêt Rouge",
-      "artiste": "CH Jaillard",
-      "description": "XqxQXqsQSqs",
-      "prix": "300",
-      "dimensions": "40 x 40",
-      "technique": "Huile sur toile",
-      "annee": "2025",
-      "categorie": "scène de vie",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/046.jpg",
-      "disponible": false
-    },
-    {
-      "id": "003",
-      "titre": "Paysage de la Drôme",
-      "artiste": "CH Jaillard",
-      "description": "Ce tableau est une peinture de paysage réalisée au couteau, mettant en scène la beauté de la campagne du coté de Grignan avec des touches de peinture épaisses et texturées.",
-      "prix": "300€ encadré",
-      "dimensions": "40 cm x 40 cm",
-      "technique": "Huile sur toile",
-      "annee": "—",
-      "categorie": "Paysages",
-      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
       "disponible": false
     }
   ]
