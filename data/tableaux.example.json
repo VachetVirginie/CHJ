@@ -131,14 +131,14 @@
     },
     {
       "id": "012",
-      "titre": "Un café en Bretagne",
+      "titre": "La terrasse bleue",
       "artiste": "CH Jaillard",
-      "description": "Description à compléter.",
+      "description": "Scène de vie vivante et chaleureuse en terrasse de café. La composition baigne dans une atmosphère méditerranéenne et conviviale, où plusieurs personnes sont attablées, profitant d'un moment de détente à l'ombre d'un arbre.",
       "prix": "Prix sur demande",
       "dimensions": "40 x 40 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "",
+      "categorie": "scène de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/012.jpg",
       "disponible": false
     },
