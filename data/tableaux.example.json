@@ -8,8 +8,7 @@
       "Paysages",
       "Bord de mer",
       "Exposition au Lavandou",
-      "scène de vie",
-      "scènes de vie"
+      "scène de vie"
     ]
   },
   "tableaux": [
@@ -48,7 +47,7 @@
       "dimensions": "50cm x 50cm",
       "technique": "Huile sur toile",
       "annee": "—",
-      "categorie": "scènes de vie",
+      "categorie": "scène de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/004.jpg",
       "disponible": false
     },
@@ -74,7 +73,7 @@
       "dimensions": "50 x 50 cm",
       "technique": "Huile sur toile de lin. Technique mixte.",
       "annee": "—",
-      "categorie": "",
+      "categorie": "Paysages",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/007.jpg",
       "disponible": true
     },
