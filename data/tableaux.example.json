@@ -186,14 +186,14 @@
       "id": "016",
       "titre": "Vue sur la cote d'Opale",
       "artiste": "CH Jaillard",
-      "description": "Description à compléter.",
-      "prix": "Prix sur demande",
+      "description": "Vue panoramique sur les grands espaces de la Côte d'Opale. Depuis les hauteurs verdoyantes bordées de petits hameaux aux façades chaleureuses, le regard embrasse l'étendue sauvage des prés salés, des bancs de sable à marée basse et la courbe majestueuse de la baie sous un ciel nordique lumineux et changeant. Le travail du pinceau et la fluidité des dégradés traduisent avec subtilité l'atmosphère iodée, la brise marine et la mobilité de la lumière sur le paysage littoral.",
+      "prix": "930€",
       "dimensions": "80 cm x 65 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "",
+      "categorie": "Bord de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/016.jpg",
-      "disponible": false
+      "disponible": true
     },
     {
       "id": "017",
