@@ -212,14 +212,14 @@
       "id": "019",
       "titre": "Eglise de St Tropez",
       "artiste": "CH Jaillard",
-      "description": "Description à compléter.",
-      "prix": "Prix sur demande",
+      "description": "Cette peinture à l'huile rend hommage à l'un des symboles les plus célèbres de la Côte d'Azur : le clocher emblématique de l'église de Saint-Tropez. Émergeant au-dessus des toits en tuiles romaines et encadré par des palmiers luxuriants, le clocher se dresse fièrement sous un ciel radieux, capturant toute l'essence chaleureuse et lumineuse du littoral méditerranéen.",
+      "prix": "300€",
       "dimensions": "46 x 34 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "",
+      "categorie": "Bord de mer",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/019.jpg",
-      "disponible": false
+      "disponible": true
     },
     {
       "id": "020",
