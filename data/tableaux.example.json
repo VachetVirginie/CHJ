@@ -8,7 +8,8 @@
       "Paysages",
       "Bord de mer",
       "Exposition au Lavandou",
-      "scène de vie"
+      "scène de vie",
+      "Scène de vie"
     ]
   },
   "tableaux": [
@@ -170,14 +171,14 @@
     },
     {
       "id": "015",
-      "titre": "Marché provençale",
+      "titre": "Les emplettes du matin",
       "artiste": "CH Jaillard",
-      "description": "Description à compléter.",
+      "description": "Cette peinture à l'huile immortalise une scène de vie quotidienne empreinte de calme et d'authenticité : l'arrêt des clientes devant l'étal coloré d'un marchand de fruits et légumes. L'œuvre capte l'instant suspendu des emplettes matinales, où chacun observe attentivement les étalages à l'abri d'un grand dais d'ombrage.  Les silhouettes sont saisies de dos ou de profil dans un style impressionniste moderne et épuré. Les formes sont synthétisées par de grands aplats de couleur, privilégiant la posture, le mouvement et la simplicité de la scène à la précision anatomique.",
       "prix": "300€",
       "dimensions": "46 x 38 cm",
       "technique": "Huile sur toile de lin",
       "annee": "—",
-      "categorie": "",
+      "categorie": "Scène de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/21.jpg",
       "disponible": true
     },
