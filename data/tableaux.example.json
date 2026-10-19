@@ -8,7 +8,8 @@
       "Paysages",
       "Bord de mer",
       "Exposition au Lavandou",
-      "scène de vie"
+      "scène de vie",
+      "scènes de vie"
     ]
   },
   "tableaux": [
@@ -47,7 +48,7 @@
       "dimensions": "50cm x 50cm",
       "technique": "Huile sur toile",
       "annee": "—",
-      "categorie": "",
+      "categorie": "scènes de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/004.jpg",
       "disponible": false
     },
@@ -595,6 +596,19 @@
       "annee": "2025",
       "categorie": "scène de vie",
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/046.jpg",
+      "disponible": false
+    },
+    {
+      "id": "003",
+      "titre": "Paysage de la Drôme",
+      "artiste": "CH Jaillard",
+      "description": "Ce tableau est une peinture de paysage réalisée au couteau, mettant en scène la beauté de la campagne du coté de Grignan avec des touches de peinture épaisses et texturées.",
+      "prix": "300€ encadré",
+      "dimensions": "40 cm x 40 cm",
+      "technique": "Huile sur toile",
+      "annee": "—",
+      "categorie": "Paysages",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
       "disponible": false
     }
   ]
