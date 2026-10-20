@@ -13,6 +13,19 @@
   },
   "tableaux": [
     {
+      "id": "003",
+      "titre": "Vignes en Provence",
+      "artiste": "CH Jaillard",
+      "description": "Cette peinture à l'huile offre un paysage bucolique et apaisant, célébrant la richesse des terres cultivées. Le regard traverse plusieurs plans successifs de cultures et de vergers ou vignobles guidant la vue vers une dense barrière d'arbres et une majestueuse chaîne de montagnes sous un ciel serein. La juxtaposition des couleurs pures et la richesse de la pâte traduisent la fraîcheur et la lumière d'une belle journée en pleine nature.",
+      "prix": "",
+      "dimensions": "40 x 40 cm",
+      "technique": "Huile sur toile de lin",
+      "annee": "",
+      "categorie": "Paysages",
+      "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/003.jpg",
+      "disponible": false
+    },
+    {
       "id": "015",
       "titre": "Un marché en Provence",
       "artiste": "CH Jaillard",
