@@ -57,6 +57,7 @@ function normalizeCatalogue(data) {
       accroche: site.accroche || "Œuvres originales et fiches accessibles par QR code.",
       email: site.email || "contact@example.com",
       whatsapp: String(site.whatsapp || "").replace(/\D+/g, ""),
+      oeuvrePhare: site.oeuvrePhare || "",
       categories: Array.isArray(site.categories)
         ? site.categories.filter((c) => typeof c === "string" && c.trim())
         : []
@@ -127,7 +128,9 @@ function catalogueCategories(tableaux) {
 function renderGallery() {
   const items = catalogue.tableaux.filter((item) => item.titre && item.image);
   const categories = catalogueCategories(items);
-  const featured = items.find((item) => item.disponible) || items[0];
+  const featured = items.find((item) => item.id === catalogue.site.oeuvrePhare)
+    || items.find((item) => item.disponible)
+    || items[0];
 
   app.innerHTML = `
     <section class="hero">
@@ -432,6 +435,7 @@ function renderAdminEditor() {
           <label>Nom de la galerie<input class="field" name="siteNom" value="${escapeAttr(catalogue.site.nom)}" /></label>
           <label>Email<input class="field" name="siteEmail" value="${escapeAttr(catalogue.site.email)}" /></label>
           <label>WhatsApp<input class="field" name="siteWhatsapp" value="${escapeAttr(catalogue.site.whatsapp)}" /></label>
+          <label>Œuvre phare (accueil)<select class="field" name="siteOeuvrePhare"><option value="">Première œuvre disponible</option>${catalogue.tableaux.map((t) => `<option value="${escapeAttr(t.id)}"${t.id === catalogue.site.oeuvrePhare ? " selected" : ""}>${escapeHtml(t.id)} — ${escapeHtml(t.titre)}</option>`).join("")}</select></label>
           <label>Mot de passe sauvegarde<input class="field" name="password" type="password" autocomplete="current-password" required /></label>
         </div>
         <div class="actions admin-actions">
@@ -693,6 +697,7 @@ function collectAdminCatalogue(form) {
         accroche: "",
         email: String(data.get("siteEmail") || "").trim(),
         whatsapp: String(data.get("siteWhatsapp") || "").trim(),
+        oeuvrePhare: String(data.get("siteOeuvrePhare") || "").trim(),
         categories
       },
       tableaux

@@ -95,6 +95,7 @@ function sanitizeCatalogue(value) {
       accroche: clean(site.accroche),
       email: clean(site.email),
       whatsapp: clean(site.whatsapp),
+      oeuvrePhare: clean(site.oeuvrePhare),
       categories
     },
     tableaux: tableaux.map((item) => {
