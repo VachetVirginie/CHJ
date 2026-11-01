@@ -22,6 +22,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/003.jpg",
       "disponible": false
     },
@@ -35,6 +36,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "scène de vie",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/015.jpg",
       "disponible": true
     },
@@ -48,6 +50,7 @@
       "technique": "Huile sur toile de lin. Couteaux et pinceaux.",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/002.jpg",
       "disponible": true
     },
@@ -61,6 +64,7 @@
       "technique": "Huile sur lin",
       "annee": "—",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/006.jpg",
       "disponible": false
     },
@@ -74,6 +78,7 @@
       "technique": "Huile sur toile",
       "annee": "—",
       "categorie": "scène de vie",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/004.jpg",
       "disponible": false
     },
@@ -87,6 +92,7 @@
       "technique": "Huile sur lin. Mixte",
       "annee": "—",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/008.jpg",
       "disponible": true
     },
@@ -100,6 +106,7 @@
       "technique": "Huile sur toile de lin. Technique mixte.",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/007.jpg",
       "disponible": true
     },
@@ -113,6 +120,7 @@
       "technique": "Huile sur toile de lin. Couteau.",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/005.jpg",
       "disponible": true
     },
@@ -126,6 +134,7 @@
       "technique": "Huile sur toile de lin.",
       "annee": "—",
       "categorie": "scène de vie",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/009.jpg",
       "disponible": true
     },
@@ -139,6 +148,7 @@
       "technique": "Huile sur toile de lin. Couteau.",
       "annee": "—",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/42.jpg",
       "disponible": true
     },
@@ -152,6 +162,7 @@
       "technique": "Huile sur toile de lin.",
       "annee": "—",
       "categorie": "scène de vie",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/011.jpg",
       "disponible": true
     },
@@ -165,6 +176,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "scène de vie",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/012.jpg",
       "disponible": false
     },
@@ -178,6 +190,7 @@
       "technique": "Huile sur toile de lin. Couteau",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/32.jpg",
       "disponible": false
     },
@@ -191,6 +204,7 @@
       "technique": "Huile sur toile de lin. Mixte",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/014.jpg",
       "disponible": true
     },
@@ -204,6 +218,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/016.jpg",
       "disponible": true
     },
@@ -217,6 +232,7 @@
       "technique": "Huile sur toile de lin. Technique mixte",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/017.jpg",
       "disponible": true
     },
@@ -230,6 +246,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/019.jpg",
       "disponible": true
     },
@@ -243,6 +260,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/020.jpg",
       "disponible": true
     },
@@ -256,6 +274,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/022.jpg",
       "disponible": false
     },
@@ -269,6 +288,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/018.jpg",
       "disponible": false
     },
@@ -282,6 +302,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/023.jpg",
       "disponible": true
     },
@@ -295,6 +316,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/024.jpg",
       "disponible": true
     },
@@ -308,6 +330,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/026.jpg",
       "disponible": true
     },
@@ -321,6 +344,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/027.jpg",
       "disponible": true
     },
@@ -334,6 +358,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/028.jpg",
       "disponible": true
     },
@@ -347,6 +372,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/029.jpg",
       "disponible": true
     },
@@ -360,6 +386,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/030.jpg",
       "disponible": true
     },
@@ -373,6 +400,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/031.jpg",
       "disponible": true
     },
@@ -386,6 +414,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/032.jpg",
       "disponible": true
     },
@@ -399,6 +428,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/033.jpg",
       "disponible": true
     },
@@ -412,6 +442,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/034.jpg",
       "disponible": true
     },
@@ -425,6 +456,7 @@
       "technique": "—",
       "annee": "2025",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/035.jpg",
       "disponible": true
     },
@@ -438,6 +470,7 @@
       "technique": "Huile sur toile de lin. Couteau",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/036.jpg",
       "disponible": true
     },
@@ -451,6 +484,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/037.jpg",
       "disponible": false
     },
@@ -464,6 +498,7 @@
       "technique": "Huile sur toile",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/038.jpg",
       "disponible": true
     },
@@ -477,6 +512,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/039.jpg",
       "disponible": true
     },
@@ -490,6 +526,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/040.jpg",
       "disponible": true
     },
@@ -503,6 +540,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "Bord de mer",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/001.jpg",
       "disponible": false
     },
@@ -516,6 +554,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/041.jpg",
       "disponible": true
     },
@@ -529,6 +568,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/042.jpg",
       "disponible": true
     },
@@ -542,6 +582,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/043.jpg",
       "disponible": true
     },
@@ -555,6 +596,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/044.jpg",
       "disponible": true
     },
@@ -568,6 +610,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/045.jpg",
       "disponible": true
     },
@@ -581,6 +624,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "—",
       "categorie": "Paysages",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/021.jpg",
       "disponible": false
     },
@@ -594,6 +638,7 @@
       "technique": "Huile sur toile de lin",
       "annee": "2025",
       "categorie": "Exposition au Lavandou",
+      "encadre": false,
       "image": "https://raw.githubusercontent.com/VachetVirginie/CHJ/main/images/025.jpg",
       "disponible": true
     }

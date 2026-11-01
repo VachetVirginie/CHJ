@@ -112,6 +112,7 @@ function sanitizeCatalogue(value) {
         technique: clean(item.technique),
         annee: clean(item.annee),
         categorie: clean(item.categorie),
+        encadre: item.encadre === true,
         image: clean(item.image),
         disponible: item.disponible !== false
       };

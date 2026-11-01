@@ -72,6 +72,7 @@ function normalizeCatalogue(data) {
       technique: item.technique || "—",
       annee: item.annee || "—",
       categorie: item.categorie || "",
+      encadre: item.encadre === true,
       image: item.image || "",
       disponible: item.disponible !== false
     })).filter((item) => item.id)
@@ -374,6 +375,7 @@ function renderDetail(id) {
           <div class="spec"><span>Technique</span><strong>${escapeHtml(item.technique)}</strong></div>
           <div class="spec"><span>Dimensions</span><strong>${escapeHtml(item.dimensions)}</strong></div>
           <div class="spec"><span>Année</span><strong>${escapeHtml(item.annee)}</strong></div>
+          <div class="spec"><span>Encadrement</span><strong>${item.encadre ? "Encadré" : "Non encadré"}</strong></div>
           <div class="spec"><span>Prix</span><strong class="price-value">${escapeHtml(item.prix)}</strong></div>
           <div class="spec"><span>Statut</span><strong class="status${item.disponible ? "" : " sold"}">${item.disponible ? "Disponible à l'acquisition" : "Collection particulière / Vendu"}</strong></div>
         </div>
@@ -487,6 +489,7 @@ function editorItemHtml(item = {}) {
             <label>Technique<input class="field" name="technique" value="${escapeAttr(item.technique || "")}" /></label>
             <label>Année<input class="field" name="annee" value="${escapeAttr(item.annee || "")}" /></label>
             <label>Catégorie<input class="field" name="categorie" list="categoriesList" value="${escapeAttr(item.categorie || "")}" placeholder="Ex. Paysages" /></label>
+            <label>Encadré<select class="field" name="encadre"><option value="false"${item.encadre !== true ? " selected" : ""}>Non</option><option value="true"${item.encadre === true ? " selected" : ""}>Oui</option></select></label>
             <label>Disponible<select class="field" name="disponible"><option value="true"${item.disponible !== false ? " selected" : ""}>Oui</option><option value="false"${item.disponible === false ? " selected" : ""}>Non</option></select></label>
           </div>
           <label>Description<textarea class="field textarea" name="description">${escapeHtml(item.description || "")}</textarea></label>
@@ -551,6 +554,7 @@ function onDisponibleChange(event) {
     technique: values.technique,
     annee: values.annee,
     categorie: values.categorie,
+    encadre: values.encadre === "true",
     image: values.image,
     disponible: false
   };
@@ -679,6 +683,7 @@ function collectAdminCatalogue(form) {
       technique: values.technique,
       annee: values.annee,
       categorie: values.categorie,
+      encadre: values.encadre === "true",
       image: values.image,
       disponible: values.disponible !== "false"
     };
