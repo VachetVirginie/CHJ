@@ -1047,6 +1047,128 @@ h3 {
   border-top: 1px solid var(--sand);
 }
 
+.frame-cta {
+  display: block;
+  margin-top: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  cursor: pointer;
+  text-align: left;
+  transition: color 200ms ease;
+}
+
+.frame-cta:hover {
+  color: var(--dark);
+}
+
+/* ---------- Pop-in encadrement ---------- */
+
+.frame-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.frame-modal[hidden] {
+  display: none;
+}
+
+.frame-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 18, 18, 0.45);
+  backdrop-filter: blur(6px);
+}
+
+.frame-modal-panel {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--sand);
+  max-width: 720px;
+  width: 100%;
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  box-shadow: 0 24px 60px rgba(18, 18, 18, 0.28);
+}
+
+.frame-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: var(--white);
+  border: 1px solid var(--sand);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--dark);
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.frame-modal-close:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+
+.frame-modal-layout {
+  display: flex;
+  align-items: stretch;
+}
+
+.frame-modal-image {
+  flex: 0 0 42%;
+  background: var(--cream);
+  border-right: 1px solid var(--sand);
+}
+
+.frame-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.frame-modal-body {
+  flex: 1;
+  padding: 32px 34px;
+}
+
+.frame-modal-body h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--dark);
+}
+
+.frame-modal-body p {
+  margin: 16px 0 0;
+  font-size: 0.84rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.frame-modal-body strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
 /* ---------- QR / admin ---------- */
 
 .qr-panel,
@@ -1462,5 +1584,23 @@ h3 {
   .toast {
     left: 16px;
     right: 16px;
+  }
+
+  .frame-modal-layout {
+    flex-direction: column;
+  }
+
+  .frame-modal-image {
+    border-right: none;
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .frame-modal-image img {
+    height: 280px;
+    object-position: 50% 45%;
+  }
+
+  .frame-modal-body {
+    padding: 24px 22px;
   }
 }

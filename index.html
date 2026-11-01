@@ -53,6 +53,25 @@
     <textarea name="message"></textarea>
   </form>
 
+  <div class="frame-modal" id="frameModal" role="dialog" aria-modal="true" aria-labelledby="frameModalTitle" hidden>
+    <div class="frame-modal-backdrop" data-close-frame></div>
+    <div class="frame-modal-panel">
+      <button type="button" class="frame-modal-close" aria-label="Fermer" data-close-frame>&times;</button>
+      <div class="frame-modal-layout">
+        <div class="frame-modal-image">
+          <img src="/images/caisse-americaine.jpg" alt="Tableau encadré dans une caisse américaine blanche" loading="lazy" />
+        </div>
+        <div class="frame-modal-body">
+          <p class="eyebrow">Option d'encadrement</p>
+          <h3 id="frameModalTitle">Caisse américaine</h3>
+          <div class="divider divider-left"></div>
+          <p>Il est possible de recevoir votre tableau encadré dans une caisse américaine en bois de couleur blanche.</p>
+          <p>Disponible <strong>à partir de 25&nbsp;€</strong> selon le format. Précisez-le simplement dans votre demande d'information.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="toast" class="toast" role="status" hidden>
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
     <span id="toast-message">Votre message a été transmis à l'artiste.</span>

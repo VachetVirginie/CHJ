@@ -19,10 +19,34 @@ async function init() {
     renderRoute();
     window.addEventListener("popstate", renderRoute);
     document.addEventListener("click", onNavigate);
+    initFrameModal();
   } catch (error) {
     renderError("Impossible de charger le catalogue.", "Vérifie l'URL du fichier JSON et sa disponibilité publique.");
   }
   initMobileMenu();
+}
+
+function initFrameModal() {
+  const modal = document.getElementById("frameModal");
+  if (!modal) return;
+
+  const close = () => {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+  };
+
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("#frameCta")) {
+      modal.hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+    if (!modal.hidden && event.target.closest("[data-close-frame]")) {
+      close();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) close();
+  });
 }
 
 function initMobileMenu() {
@@ -356,9 +380,6 @@ function renderDetail(id) {
 
   const url = absoluteUrl(`/tableau/${item.id}`);
   const mailLink = `mailto:${encodeURIComponent(catalogue.site.email)}?subject=${encodeURIComponent("Demande d'information - " + item.titre)}&body=${encodeURIComponent("Bonjour,\n\nJe souhaite avoir plus d'informations sur le tableau : " + item.titre + "\n" + url)}`;
-  const whatsappLink = catalogue.site.whatsapp
-    ? `https://wa.me/${catalogue.site.whatsapp}?text=${encodeURIComponent("Bonjour, je souhaite avoir plus d'informations sur le tableau : " + item.titre + " " + url)}`
-    : "";
 
   app.innerHTML = `
     <section class="detail">
@@ -375,13 +396,12 @@ function renderDetail(id) {
           <div class="spec"><span>Technique</span><strong>${escapeHtml(item.technique)}</strong></div>
           <div class="spec"><span>Dimensions</span><strong>${escapeHtml(item.dimensions)}</strong></div>
           <div class="spec"><span>Année</span><strong>${escapeHtml(item.annee)}</strong></div>
-          <div class="spec"><span>Encadrement</span><strong>${item.encadre ? "Encadré" : "Non encadré"}</strong></div>
+          <div class="spec"><span>Encadrement</span><strong>${item.encadre ? "Encadré" : `Non encadré <button type="button" class="frame-cta" id="frameCta">caisse américaine dès 25&nbsp;€ &rarr;</button>`}</strong></div>
           <div class="spec"><span>Prix</span><strong class="price-value">${escapeHtml(item.prix)}</strong></div>
           <div class="spec"><span>Statut</span><strong class="status${item.disponible ? "" : " sold"}">${item.disponible ? "Disponible à l'acquisition" : "Collection particulière / Vendu"}</strong></div>
         </div>
         <div class="actions">
           <a class="button primary" href="${escapeAttr(mailLink)}">Demande d'information</a>
-          ${whatsappLink ? `<a class="button" href="${escapeAttr(whatsappLink)}" target="_blank" rel="noopener">WhatsApp</a>` : ""}
           <a class="button" href="/" data-link>Retour galerie</a>
         </div>
       </article>
