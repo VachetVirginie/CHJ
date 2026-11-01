@@ -129,6 +129,7 @@ function renderGallery() {
   const items = catalogue.tableaux.filter((item) => item.titre && item.image);
   const categories = catalogueCategories(items);
   const featured = items.find((item) => item.id === catalogue.site.oeuvrePhare)
+    || items.find((item) => /041\.jpe?g$/i.test(item.image || ""))
     || items.find((item) => item.disponible)
     || items[0];
 
