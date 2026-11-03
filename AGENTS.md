@@ -18,6 +18,7 @@ cd images
 for f in *.jpg; do
   base="${f%.jpg}"
   sips -Z 800 -s format jpeg -s formatOptions 60 "$f" --out "thumbs/${base}-800.jpg"
-  sips -Z 800 -s format avif -s formatOptions 50 "$f" --out "thumbs/${base}-800.avif"
+  sips -Z 800 -s format avif -s formatOptions 45 "$f" --out "thumbs/${base}-800.avif"
+  sips -Z 1200 -s format avif -s formatOptions 45 "$f" --out "thumbs/${base}-1200.avif"
 done
 ```

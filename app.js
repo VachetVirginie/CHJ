@@ -8,6 +8,7 @@ const CONFIG = {
 
 const app = document.getElementById("app");
 let catalogue = null;
+let pendingHash = "";
 
 init();
 
@@ -159,6 +160,7 @@ function renderAdminHub() {
       </div>
     </section>
   `;
+  setPageMeta({ title: `Espace de gestion — ${catalogue.site.nom}`, description: "Espace privé de gestion du catalogue.", noindex: true });
 }
 
 function catalogueCategories(tableaux) {
@@ -223,7 +225,7 @@ function renderGallery() {
           <div class="artiste-frame">
             <picture>
               <source type="image/avif" srcset="/images/thumbs/ch-800.avif 800w, /images/thumbs/ch-1200.avif 1200w" sizes="(min-width: 1000px) 480px, 92vw" />
-              <img src="/images/thumbs/ch-800.jpg" srcset="/images/thumbs/ch-800.jpg 800w, /images/thumbs/ch-1200.jpg 1200w, /images/ch.jpg 1481w" sizes="(min-width: 1000px) 480px, 92vw" alt="Charles H Jaillard" loading="lazy" decoding="async" data-orig="/images/ch.jpg" onerror="imageFallback(this)" />
+              <img src="/images/thumbs/ch-800.jpg" srcset="/images/thumbs/ch-800.jpg 800w, /images/ch.jpg 1481w" sizes="(min-width: 1000px) 480px, 92vw" alt="Charles H Jaillard" loading="lazy" decoding="async" data-orig="/images/ch.jpg" onerror="imageFallback(this)" />
             </picture>
           </div>
         </div>
@@ -297,6 +299,13 @@ function renderGallery() {
     </section>
   `;
 
+  setPageMeta({
+    title: catalogue.site.nom,
+    description: catalogue.site.accroche || "Galerie de peintures impressionnistes contemporaines. Œuvres originales à l'huile, fiches accessibles par QR code.",
+    image: featured && featured.image,
+    path: "/"
+  });
+
   const grid = document.getElementById("galleryGrid");
   const count = document.getElementById("artworkCount");
   const searchInput = document.getElementById("searchInput");
@@ -320,7 +329,10 @@ function renderGallery() {
     ));
   };
 
-  requestAnimationFrame(() => requestAnimationFrame(() => renderItems(items)));
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    renderItems(items);
+    scrollToPendingHash();
+  }));
 
   document.getElementById("categoryFilters").addEventListener("click", (event) => {
     const button = event.target.closest(".cat-btn");
@@ -408,7 +420,7 @@ function renderDetail(id) {
       </div>
       <article class="detail-panel">
         <p class="eyebrow">Fiche tableau</p>
-        <h2>${escapeHtml(item.titre)}</h2>
+        <h1>${escapeHtml(item.titre)}</h1>
         <div class="divider divider-left"></div>
         <p class="description">${escapeHtml(item.description)}</p>
         <div class="spec-list">
@@ -427,6 +439,15 @@ function renderDetail(id) {
       </article>
     </section>
   `;
+
+  setPageMeta({
+    title: `${item.titre} — ${catalogue.site.nom}`,
+    description: item.description,
+    image: item.image,
+    path: `/tableau/${item.id}`,
+    type: "article",
+    artwork: item
+  });
 }
 
 function renderQrCodes() {
@@ -441,6 +462,7 @@ function renderQrCodes() {
       ${items.map(qrHtml).join("")}
     </section>
   `;
+  setPageMeta({ title: `QR codes — ${catalogue.site.nom}`, description: "Espace privé de gestion du catalogue.", noindex: true });
 }
 
 function qrHtml(item) {
@@ -494,6 +516,8 @@ function renderAdminEditor() {
 
   document.getElementById("addPaintingBtn").addEventListener("click", addEditorItem);
   document.getElementById("adminForm").addEventListener("submit", submitCatalogue);
+  setPageMeta({ title: `Éditeur du catalogue — ${catalogue.site.nom}`, description: "Espace privé de gestion du catalogue.", noindex: true });
+
   document.getElementById("paintingsEditor").addEventListener("click", (event) => {
     const button = event.target.closest("[data-remove-editor-item]");
     if (button) {
@@ -763,8 +787,12 @@ function siteImagePath(url) {
 function thumbPaths(localPath) {
   const match = localPath.match(/^\/images\/([^/]+)\.jpe?g$/i);
   if (!match) return null;
-  const base = "/images/thumbs/" + match[1] + "-800";
-  return { avif: base + ".avif", jpg: base + ".jpg" };
+  const base = "/images/thumbs/" + match[1];
+  return {
+    avif: base + "-800.avif",
+    avifLarge: base + "-1200.avif",
+    jpg: base + "-800.jpg"
+  };
 }
 
 function imageFallback(img) {
@@ -788,7 +816,8 @@ function imageHtml(item, className, opts = {}) {
   if (!thumbs) return `<img ${attrs} src="${escapeAttr(local || remote)}" />`;
   const sizes = escapeAttr(opts.sizes || "(min-width: 1200px) 380px, (min-width: 640px) 31vw, 92vw");
   const srcset = `${escapeAttr(thumbs.jpg)} 800w, ${escapeAttr(local)} 1400w`;
-  return `<picture><source type="image/avif" srcset="${escapeAttr(thumbs.avif)}" /><img ${attrs} src="${escapeAttr(thumbs.jpg)}" srcset="${srcset}" sizes="${sizes}" /></picture>`;
+  const avifSrcset = `${escapeAttr(thumbs.avif)} 800w, ${escapeAttr(thumbs.avifLarge)} 1200w`;
+  return `<picture><source type="image/avif" srcset="${avifSrcset}" sizes="${sizes}" /><img ${attrs} src="${escapeAttr(thumbs.jpg)}" srcset="${srcset}" sizes="${sizes}" /></picture>`;
 }
 
 function renderLoading() {
@@ -799,13 +828,14 @@ function renderError(title, detail) {
   app.innerHTML = `
     <section class="error">
       <p class="eyebrow">Erreur</p>
-      <h2>${escapeHtml(title)}</h2>
+      <h1>${escapeHtml(title)}</h1>
       <p class="description">${escapeHtml(detail)}</p>
       <div class="actions">
         <a class="button" href="/" data-link>Retour accueil</a>
       </div>
     </section>
   `;
+  setPageMeta({ title: `${title} — ${(catalogue && catalogue.site.nom) || "Galerie"}`, description: detail, noindex: true });
 }
 
 function onNavigate(event) {
@@ -814,18 +844,114 @@ function onNavigate(event) {
   const url = new URL(link.href);
   if (url.origin !== window.location.origin) return;
   event.preventDefault();
+  pendingHash = url.hash;
   window.history.pushState({}, "", url.pathname + url.hash);
   renderRoute();
-  if (url.hash) {
-    const target = document.querySelector(url.hash);
-    if (target) target.scrollIntoView({ behavior: "smooth" });
+  if (pendingHash) {
+    if (!document.getElementById("galleryGrid")) scrollToPendingHash();
     return;
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+function scrollToPendingHash() {
+  const hash = pendingHash || window.location.hash;
+  pendingHash = "";
+  if (!hash) return;
+  const target = document.querySelector(hash);
+  if (target) target.scrollIntoView({ behavior: "smooth" });
+}
+
 function absoluteUrl(path) {
   return new URL(path, window.location.origin).href;
+}
+
+function upsertMetaTag(attr, value, content) {
+  let el = document.head.querySelector(`meta[${attr}='${value}']`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, value);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
+function truncateText(value, max = 155) {
+  const text = String(value || "").replace(/\s+/g, " ").trim();
+  if (text.length <= max) return text;
+  return text.slice(0, max).replace(/\s+\S*$/, "") + "…";
+}
+
+function parsePriceNumber(value) {
+  const match = String(value || "").replace(/[\s  ]/g, "").replace(",", ".").match(/\d+(\.\d+)?/);
+  return match ? parseFloat(match[0]) : null;
+}
+
+function setPageMeta(options = {}) {
+  const site = (catalogue && catalogue.site) || {};
+  const siteName = site.nom || "Galerie Charles H Jaillard";
+  const title = options.title || siteName;
+  const description = truncateText(options.description || site.accroche || "Œuvres originales et fiches accessibles par QR code.");
+  const image = options.image ? absoluteUrl(siteImagePath(options.image) || options.image) : "";
+  const url = absoluteUrl(options.path || normalizePath(window.location.pathname));
+
+  document.title = title;
+  upsertMetaTag("name", "description", description);
+  upsertMetaTag("name", "robots", options.noindex ? "noindex" : "index,follow");
+  upsertMetaTag("name", "twitter:card", image ? "summary_large_image" : "summary");
+  upsertMetaTag("property", "og:type", options.type || "website");
+  upsertMetaTag("property", "og:title", title);
+  upsertMetaTag("property", "og:description", description);
+  upsertMetaTag("property", "og:url", url);
+  upsertMetaTag("property", "og:site_name", siteName);
+  if (image) {
+    upsertMetaTag("property", "og:image", image);
+    upsertMetaTag("name", "twitter:image", image);
+  }
+
+  let canonical = document.head.querySelector("link[rel='canonical']");
+  if (!canonical) {
+    canonical = document.createElement("link");
+    canonical.setAttribute("rel", "canonical");
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute("href", url);
+
+  let jsonLd = document.getElementById("artworkJsonLd");
+  if (!options.artwork) {
+    if (jsonLd) jsonLd.remove();
+    return;
+  }
+  const artwork = options.artwork;
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "VisualArtwork",
+    "name": artwork.titre,
+    "description": truncateText(artwork.description, 300),
+    "url": url,
+    "creator": { "@type": "Person", "name": artwork.artiste },
+    "artMedium": artwork.technique,
+    "size": artwork.dimensions
+  };
+  if (image) data.image = image;
+  if (artwork.annee && artwork.annee !== "—") data.dateCreated = artwork.annee;
+  if (artwork.categorie) data.genre = artwork.categorie;
+  const price = parsePriceNumber(artwork.prix);
+  if (price !== null) {
+    data.offers = {
+      "@type": "Offer",
+      "price": price,
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/" + (artwork.disponible ? "InStock" : "SoldOut")
+    };
+  }
+  if (!jsonLd) {
+    jsonLd = document.createElement("script");
+    jsonLd.type = "application/ld+json";
+    jsonLd.id = "artworkJsonLd";
+    document.head.appendChild(jsonLd);
+  }
+  jsonLd.textContent = JSON.stringify(data);
 }
 
 function withCacheBust(path) {
