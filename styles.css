@@ -4,7 +4,7 @@
   --dark: #121212;
   --ink: #232323;
   --muted: #6b6560;
-  --faint: #9ca3af;
+  --faint: #6b7280;
   --cream: #faf8f5;
   --sand: #f2ede4;
   --line: #e7dfd3;
@@ -121,6 +121,10 @@ img {
   display: block;
 }
 
+picture {
+  display: contents;
+}
+
 a {
   color: inherit;
 }
@@ -139,6 +143,7 @@ a {
 .header-inner {
   width: min(1200px, calc(100% - 32px));
   margin-inline: auto;
+  height: 75px;
   padding: 14px 0;
   display: flex;
   align-items: center;
@@ -287,7 +292,7 @@ a {
 
 .artiste-frame img {
   width: 100%;
-  max-height: 600px;
+  height: 600px;
   object-fit: cover;
   object-position: center top;
   display: block;
@@ -978,7 +983,7 @@ h3 {
   flex-direction: column;
 }
 
-.detail-panel h2 {
+.detail-panel h1 {
   font-size: 2.2rem;
 }
 
@@ -1479,13 +1484,14 @@ h3 {
   border-top: 1px solid #292524;
   font-size: 0.72rem;
   font-weight: 300;
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 /* ---------- Responsive ---------- */
 
 @media (max-width: 840px) {
   .header-inner {
+    height: 61px;
     padding: 12px 0;
   }
 

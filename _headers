@@ -3,3 +3,12 @@
 
 /chj/*
   Basic-Auth: admin:change-moi
+
+/images/*
+  Cache-Control: public, max-age=604800
+
+/styles.css
+  Cache-Control: public, max-age=86400
+
+/app.js
+  Cache-Control: public, max-age=86400

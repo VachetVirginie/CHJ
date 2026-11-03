@@ -8,6 +8,7 @@ const CONFIG = {
 
 const app = document.getElementById("app");
 let catalogue = null;
+let pendingHash = "";
 
 init();
 
@@ -16,6 +17,7 @@ async function init() {
   try {
     catalogue = normalizeCatalogue(await fetchCatalogue());
     updateSiteChrome(catalogue.site);
+    await fontsReady();
     renderRoute();
     window.addEventListener("popstate", renderRoute);
     document.addEventListener("click", onNavigate);
@@ -65,11 +67,27 @@ function initMobileMenu() {
 }
 
 async function fetchCatalogue() {
-  const response = await fetch(withCacheBust(CONFIG.dataUrl), { cache: "no-store" });
+  const response = await fetch(CONFIG.dataUrl, { cache: "no-store", credentials: "omit" });
   if (response.ok) return response.json();
   const fallback = await fetch(withCacheBust(CONFIG.fallbackDataUrl), { cache: "no-store" });
   if (!fallback.ok) throw new Error("HTTP " + response.status);
   return fallback.json();
+}
+
+function fontsReady() {
+  if (!document.fonts || !document.fonts.load) return Promise.resolve();
+  const faces = [
+    '300 1em Poppins',
+    '400 1em Poppins',
+    '500 1em Poppins',
+    '600 1em Poppins',
+    '300 1em "Cormorant Garamond"',
+    '400 1em "Cormorant Garamond"',
+    '600 1em "Cormorant Garamond"',
+    'italic 400 1em "Cormorant Garamond"'
+  ];
+  const loads = faces.map((face) => document.fonts.load(face).catch(() => false));
+  return Promise.race([Promise.all(loads), new Promise((resolve) => setTimeout(resolve, 400))]);
 }
 
 function normalizeCatalogue(data) {
@@ -142,6 +160,7 @@ function renderAdminHub() {
       </div>
     </section>
   `;
+  setPageMeta({ title: `Espace de gestion — ${catalogue.site.nom}`, description: "Espace privé de gestion du catalogue.", noindex: true });
 }
 
 function catalogueCategories(tableaux) {
@@ -162,7 +181,7 @@ function renderGallery() {
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-text">
-          <svg class="hero-sun" viewBox="0 0 100 100" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="Soleil">
+          <svg class="hero-sun" viewBox="0 0 100 100" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M 50 23 C 66 22, 78 34, 77 50 C 76 66, 63 78, 47 77 C 32 76, 22 63, 23 47 C 24 33, 37 23, 52 24 C 60 25, 68 29, 71 36" fill="#FBBF24" stroke-width="4" stroke-linecap="round"/>
             <path d="M 50 5 L 49 15 M 79 16 L 71 24 M 95 49 L 84 50 M 80 81 L 72 73 M 48 95 L 49 84 M 20 81 L 28 73 M 5 50 L 16 49 M 18 19 L 26 27" stroke-width="4" stroke-linecap="round"/>
           </svg>
@@ -172,8 +191,8 @@ function renderGallery() {
           <a class="button" href="#gallerySection">Découvrir les œuvres</a>
         </div>
         ${featured ? `
-        <a class="hero-frame" href="/tableau/${encodeURIComponent(featured.id)}" data-link aria-label="Voir ${escapeAttr(featured.titre)}">
-          <span class="hero-frame-media">${imageHtml(featured, "hero-frame-img")}</span>
+        <a class="hero-frame" href="/tableau/${encodeURIComponent(featured.id)}" data-link>
+          <span class="hero-frame-media">${imageHtml(featured, "hero-frame-img", { eager: true, sizes: "(min-width: 900px) 400px, 92vw" })}</span>
           <span class="hero-frame-caption">
             <span class="hero-frame-eyebrow">Œuvre phare</span>
             <span class="hero-frame-title">${escapeHtml(featured.titre)}</span>
@@ -194,7 +213,7 @@ function renderGallery() {
       </header>
       <div class="toolbar">
         <div class="toolbar-search">
-          <input type="search" id="searchInput" class="input toolbar-input" placeholder="Rechercher un titre ou un mot-clé..." aria-label="Rechercher un tableau" />
+          <input type="search" id="searchInput" class="input toolbar-input" placeholder="Rechercher un titre ou un mot-clé..." aria-label="Rechercher un tableau" title="Rechercher un tableau" />
         </div>
         <span class="artwork-count" id="artworkCount"></span>
       </div>
@@ -204,7 +223,10 @@ function renderGallery() {
       <div class="artiste-inner">
         <div class="artiste-portrait">
           <div class="artiste-frame">
-            <img src="images/ch.jpg" alt="Charles H Jaillard" loading="lazy" />
+            <picture>
+              <source type="image/avif" srcset="/images/thumbs/ch-800.avif 800w, /images/thumbs/ch-1200.avif 1200w" sizes="(min-width: 1000px) 480px, 92vw" />
+              <img src="/images/thumbs/ch-800.jpg" srcset="/images/thumbs/ch-800.jpg 800w, /images/ch.jpg 1481w" sizes="(min-width: 1000px) 480px, 92vw" alt="Charles H Jaillard" loading="lazy" decoding="async" data-orig="/images/ch.jpg" onerror="imageFallback(this)" />
+            </picture>
           </div>
         </div>
         <div class="artiste-body">
@@ -277,6 +299,13 @@ function renderGallery() {
     </section>
   `;
 
+  setPageMeta({
+    title: catalogue.site.nom,
+    description: catalogue.site.accroche || "Galerie de peintures impressionnistes contemporaines. Œuvres originales à l'huile, fiches accessibles par QR code.",
+    image: featured && featured.image,
+    path: "/"
+  });
+
   const grid = document.getElementById("galleryGrid");
   const count = document.getElementById("artworkCount");
   const searchInput = document.getElementById("searchInput");
@@ -300,7 +329,10 @@ function renderGallery() {
     ));
   };
 
-  renderItems(items);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    renderItems(items);
+    scrollToPendingHash();
+  }));
 
   document.getElementById("categoryFilters").addEventListener("click", (event) => {
     const button = event.target.closest(".cat-btn");
@@ -353,7 +385,7 @@ function cardHtml(item) {
     : `<span class="badge badge-sold">Vendu</span>`;
   return `
     <article class="card">
-      <a class="card-media" href="/tableau/${encodeURIComponent(item.id)}" data-link aria-label="Voir ${escapeAttr(item.titre)}">
+      <a class="card-media" href="/tableau/${encodeURIComponent(item.id)}" data-link>
         ${imageHtml(item, "card-image")}
         <span class="card-badge">${badge}</span>
         <span class="card-overlay"><span class="card-overlay-label">Agrandir / Détails</span></span>
@@ -384,11 +416,11 @@ function renderDetail(id) {
   app.innerHTML = `
     <section class="detail">
       <div class="detail-media">
-        ${imageHtml(item, "detail-image")}
+        ${imageHtml(item, "detail-image", { eager: true, sizes: "(min-width: 1240px) 1140px, 94vw" })}
       </div>
       <article class="detail-panel">
         <p class="eyebrow">Fiche tableau</p>
-        <h2>${escapeHtml(item.titre)}</h2>
+        <h1>${escapeHtml(item.titre)}</h1>
         <div class="divider divider-left"></div>
         <p class="description">${escapeHtml(item.description)}</p>
         <div class="spec-list">
@@ -407,6 +439,15 @@ function renderDetail(id) {
       </article>
     </section>
   `;
+
+  setPageMeta({
+    title: `${item.titre} — ${catalogue.site.nom}`,
+    description: item.description,
+    image: item.image,
+    path: `/tableau/${item.id}`,
+    type: "article",
+    artwork: item
+  });
 }
 
 function renderQrCodes() {
@@ -421,6 +462,7 @@ function renderQrCodes() {
       ${items.map(qrHtml).join("")}
     </section>
   `;
+  setPageMeta({ title: `QR codes — ${catalogue.site.nom}`, description: "Espace privé de gestion du catalogue.", noindex: true });
 }
 
 function qrHtml(item) {
@@ -474,6 +516,8 @@ function renderAdminEditor() {
 
   document.getElementById("addPaintingBtn").addEventListener("click", addEditorItem);
   document.getElementById("adminForm").addEventListener("submit", submitCatalogue);
+  setPageMeta({ title: `Éditeur du catalogue — ${catalogue.site.nom}`, description: "Espace privé de gestion du catalogue.", noindex: true });
+
   document.getElementById("paintingsEditor").addEventListener("click", (event) => {
     const button = event.target.closest("[data-remove-editor-item]");
     if (button) {
@@ -731,9 +775,49 @@ function collectAdminCatalogue(form) {
   };
 }
 
-function imageHtml(item, className) {
+function siteImagePath(url) {
+  const value = String(url || "");
+  const remote = value.match(/^https?:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+\/(.+)$/);
+  if (remote && remote[1].startsWith("images/")) return "/" + remote[1];
+  if (value.startsWith("images/")) return "/" + value;
+  if (value.startsWith("/images/")) return value;
+  return "";
+}
+
+function thumbPaths(localPath) {
+  const match = localPath.match(/^\/images\/([^/]+)\.jpe?g$/i);
+  if (!match) return null;
+  const base = "/images/thumbs/" + match[1];
+  return {
+    avif: base + "-800.avif",
+    avifLarge: base + "-1200.avif",
+    jpg: base + "-800.jpg"
+  };
+}
+
+function imageFallback(img) {
+  if (img.dataset.fb) return;
+  img.dataset.fb = "1";
+  const picture = img.closest("picture");
+  if (picture) picture.querySelectorAll("source").forEach((source) => source.remove());
+  img.removeAttribute("srcset");
+  img.removeAttribute("sizes");
+  img.src = img.dataset.orig;
+}
+
+function imageHtml(item, className, opts = {}) {
   if (!item.image) return `<div class="${className}" role="img" aria-label="Image à compléter"></div>`;
-  return `<img class="${className}" src="${escapeAttr(item.image)}" alt="${escapeAttr(item.titre)}" loading="lazy" />`;
+  const remote = String(item.image);
+  const local = siteImagePath(remote);
+  const thumbs = local ? thumbPaths(local) : null;
+  const loading = opts.eager ? `loading="eager" fetchpriority="high"` : `loading="lazy"`;
+  const fallback = remote && local ? ` data-orig="${escapeAttr(remote)}" onerror="imageFallback(this)"` : "";
+  const attrs = `class="${className}" alt="${escapeAttr(item.titre)}" ${loading} decoding="async"${fallback}`;
+  if (!thumbs) return `<img ${attrs} src="${escapeAttr(local || remote)}" />`;
+  const sizes = escapeAttr(opts.sizes || "(min-width: 1200px) 380px, (min-width: 640px) 31vw, 92vw");
+  const srcset = `${escapeAttr(thumbs.jpg)} 800w, ${escapeAttr(local)} 1400w`;
+  const avifSrcset = `${escapeAttr(thumbs.avif)} 800w, ${escapeAttr(thumbs.avifLarge)} 1200w`;
+  return `<picture><source type="image/avif" srcset="${avifSrcset}" sizes="${sizes}" /><img ${attrs} src="${escapeAttr(thumbs.jpg)}" srcset="${srcset}" sizes="${sizes}" /></picture>`;
 }
 
 function renderLoading() {
@@ -744,13 +828,14 @@ function renderError(title, detail) {
   app.innerHTML = `
     <section class="error">
       <p class="eyebrow">Erreur</p>
-      <h2>${escapeHtml(title)}</h2>
+      <h1>${escapeHtml(title)}</h1>
       <p class="description">${escapeHtml(detail)}</p>
       <div class="actions">
         <a class="button" href="/" data-link>Retour accueil</a>
       </div>
     </section>
   `;
+  setPageMeta({ title: `${title} — ${(catalogue && catalogue.site.nom) || "Galerie"}`, description: detail, noindex: true });
 }
 
 function onNavigate(event) {
@@ -759,18 +844,114 @@ function onNavigate(event) {
   const url = new URL(link.href);
   if (url.origin !== window.location.origin) return;
   event.preventDefault();
+  pendingHash = url.hash;
   window.history.pushState({}, "", url.pathname + url.hash);
   renderRoute();
-  if (url.hash) {
-    const target = document.querySelector(url.hash);
-    if (target) target.scrollIntoView({ behavior: "smooth" });
+  if (pendingHash) {
+    if (!document.getElementById("galleryGrid")) scrollToPendingHash();
     return;
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+function scrollToPendingHash() {
+  const hash = pendingHash || window.location.hash;
+  pendingHash = "";
+  if (!hash) return;
+  const target = document.querySelector(hash);
+  if (target) target.scrollIntoView({ behavior: "smooth" });
+}
+
 function absoluteUrl(path) {
   return new URL(path, window.location.origin).href;
+}
+
+function upsertMetaTag(attr, value, content) {
+  let el = document.head.querySelector(`meta[${attr}='${value}']`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, value);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
+function truncateText(value, max = 155) {
+  const text = String(value || "").replace(/\s+/g, " ").trim();
+  if (text.length <= max) return text;
+  return text.slice(0, max).replace(/\s+\S*$/, "") + "…";
+}
+
+function parsePriceNumber(value) {
+  const match = String(value || "").replace(/[\s  ]/g, "").replace(",", ".").match(/\d+(\.\d+)?/);
+  return match ? parseFloat(match[0]) : null;
+}
+
+function setPageMeta(options = {}) {
+  const site = (catalogue && catalogue.site) || {};
+  const siteName = site.nom || "Galerie Charles H Jaillard";
+  const title = options.title || siteName;
+  const description = truncateText(options.description || site.accroche || "Œuvres originales et fiches accessibles par QR code.");
+  const image = options.image ? absoluteUrl(siteImagePath(options.image) || options.image) : "";
+  const url = absoluteUrl(options.path || normalizePath(window.location.pathname));
+
+  document.title = title;
+  upsertMetaTag("name", "description", description);
+  upsertMetaTag("name", "robots", options.noindex ? "noindex" : "index,follow");
+  upsertMetaTag("name", "twitter:card", image ? "summary_large_image" : "summary");
+  upsertMetaTag("property", "og:type", options.type || "website");
+  upsertMetaTag("property", "og:title", title);
+  upsertMetaTag("property", "og:description", description);
+  upsertMetaTag("property", "og:url", url);
+  upsertMetaTag("property", "og:site_name", siteName);
+  if (image) {
+    upsertMetaTag("property", "og:image", image);
+    upsertMetaTag("name", "twitter:image", image);
+  }
+
+  let canonical = document.head.querySelector("link[rel='canonical']");
+  if (!canonical) {
+    canonical = document.createElement("link");
+    canonical.setAttribute("rel", "canonical");
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute("href", url);
+
+  let jsonLd = document.getElementById("artworkJsonLd");
+  if (!options.artwork) {
+    if (jsonLd) jsonLd.remove();
+    return;
+  }
+  const artwork = options.artwork;
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "VisualArtwork",
+    "name": artwork.titre,
+    "description": truncateText(artwork.description, 300),
+    "url": url,
+    "creator": { "@type": "Person", "name": artwork.artiste },
+    "artMedium": artwork.technique,
+    "size": artwork.dimensions
+  };
+  if (image) data.image = image;
+  if (artwork.annee && artwork.annee !== "—") data.dateCreated = artwork.annee;
+  if (artwork.categorie) data.genre = artwork.categorie;
+  const price = parsePriceNumber(artwork.prix);
+  if (price !== null) {
+    data.offers = {
+      "@type": "Offer",
+      "price": price,
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/" + (artwork.disponible ? "InStock" : "SoldOut")
+    };
+  }
+  if (!jsonLd) {
+    jsonLd = document.createElement("script");
+    jsonLd.type = "application/ld+json";
+    jsonLd.id = "artworkJsonLd";
+    document.head.appendChild(jsonLd);
+  }
+  jsonLd.textContent = JSON.stringify(data);
 }
 
 function withCacheBust(path) {

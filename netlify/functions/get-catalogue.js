@@ -10,6 +10,16 @@ exports.handler = async () => {
   }
 
   try {
+    const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${encodeURIComponent(branch)}/${encodeURIComponentPath(path)}`;
+    const raw = await fetch(rawUrl, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "User-Agent": "galerie-tableaux-admin",
+        "Cache-Control": "no-store"
+      }
+    });
+    if (raw.ok) return jsonResponse(200, await raw.json());
+
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponentPath(path)}?ref=${encodeURIComponent(branch)}`;
     const response = await fetch(apiUrl, {
       headers: {
