@@ -179,7 +179,7 @@ function renderGallery() {
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-text">
-          <svg class="hero-sun" viewBox="0 0 100 100" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="Soleil">
+          <svg class="hero-sun" viewBox="0 0 100 100" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M 50 23 C 66 22, 78 34, 77 50 C 76 66, 63 78, 47 77 C 32 76, 22 63, 23 47 C 24 33, 37 23, 52 24 C 60 25, 68 29, 71 36" fill="#FBBF24" stroke-width="4" stroke-linecap="round"/>
             <path d="M 50 5 L 49 15 M 79 16 L 71 24 M 95 49 L 84 50 M 80 81 L 72 73 M 48 95 L 49 84 M 20 81 L 28 73 M 5 50 L 16 49 M 18 19 L 26 27" stroke-width="4" stroke-linecap="round"/>
           </svg>
@@ -211,7 +211,7 @@ function renderGallery() {
       </header>
       <div class="toolbar">
         <div class="toolbar-search">
-          <input type="search" id="searchInput" class="input toolbar-input" placeholder="Rechercher un titre ou un mot-clé..." aria-label="Rechercher un tableau" />
+          <input type="search" id="searchInput" class="input toolbar-input" placeholder="Rechercher un titre ou un mot-clé..." aria-label="Rechercher un tableau" title="Rechercher un tableau" />
         </div>
         <span class="artwork-count" id="artworkCount"></span>
       </div>
