@@ -223,7 +223,7 @@ function renderGallery() {
           <div class="artiste-frame">
             <picture>
               <source type="image/avif" srcset="/images/thumbs/ch-800.avif 800w, /images/thumbs/ch-1200.avif 1200w" sizes="(min-width: 1000px) 480px, 92vw" />
-              <img src="/images/thumbs/ch-800.jpg" srcset="/images/thumbs/ch-800.jpg 800w, /images/thumbs/ch-1200.jpg 1200w, /images/ch.jpg 1481w" sizes="(min-width: 1000px) 480px, 92vw" alt="Charles H Jaillard" loading="lazy" decoding="async" />
+              <img src="/images/thumbs/ch-800.jpg" srcset="/images/thumbs/ch-800.jpg 800w, /images/thumbs/ch-1200.jpg 1200w, /images/ch.jpg 1481w" sizes="(min-width: 1000px) 480px, 92vw" alt="Charles H Jaillard" loading="lazy" decoding="async" data-orig="/images/ch.jpg" onerror="imageFallback(this)" />
             </picture>
           </div>
         </div>
